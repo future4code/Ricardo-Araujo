@@ -15,6 +15,11 @@ ul{
     list-style: none;
 }
 
+a{
+    text-decoration: none;
+    color:black;
+}
+
 #container-home{
     background-color: rgb(226,226,226);
     width: 100%;
@@ -39,7 +44,6 @@ header{
     margin-right: 70px;
 }
 
-
 #menu li{
     display: inline;
     margin: 10px;
@@ -49,10 +53,16 @@ header{
     color:white;
 }
 
-a{
-    text-decoration: none;
-    color:black;
+#menu li:hover{
+    background-color: grey;
 }
+
+.principal{
+    height: 72vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 
 #principal-home{
     height: 72vh;
@@ -69,11 +79,15 @@ a{
     margin-left:15vw;
 }
 
-#resumo{
+#resumo-home{
+    margin-right: 26vw;
+    text-align: left;
+}
+
+.resumo{
     margin: 10vw;
     text-align: justify;
 }
-
 
 footer{
     height: 16vh;
@@ -95,3 +109,40 @@ footer img{
 footer td{
     padding:6px;
 }
+
+#principal-formacao img{
+    height: 40px;
+    margin: 20px;
+    }
+
+.imgFormacao{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    }
+
+#principal-formacao td{
+    min-width:240px;
+    }
+
+#principal-experiencias img{
+    width: 140px;
+    margin: 20px;
+}
+
+#principal-projetos div{
+    margin:10px;
+}
+
+#principal-projetos img{
+    height: 300px;
+    width: 300px;
+    border: 1px solid black;
+}
+
+#ripmecanica{
+    color:grey;
+    font-style: italic;
+    font-size: 13px;
+}
+
