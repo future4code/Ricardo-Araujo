@@ -24,6 +24,7 @@ input {
 
 button:focus {
     color: white;
+    outline:0;
 }
 
 img {
@@ -56,6 +57,15 @@ div>p:first-child {
 .icone {
     height: 15px;
 }
+
+li{
+    list-style-type: decimal;
+}
+
+ol{
+    display:inline-block;
+}
+  
 
 /** 
   *
@@ -151,4 +161,8 @@ td button:hover {
 #caixa-search{
     border:0;
     border-bottom: 3px solid black;
+}
+
+#caixa-search:focus{
+    outline:0;
 }
