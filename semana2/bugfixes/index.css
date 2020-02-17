@@ -34,10 +34,6 @@ div>p:first-child {
     display: block;
 }
 
-/*div img {
-    background: black;
-}*/
-
 .botao-amarelo {
     background-color: #ffaf43;
     width: 250px;
@@ -150,4 +146,10 @@ td button:hover {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+#caixa-search{
+    border:0;
+    border-bottom: 3px solid black;
+    
 }
