@@ -57,7 +57,6 @@ div>p:first-child {
     height: 15px;
 }
 
-
 /** 
   *
   *  ESTILOS HOME 
@@ -102,6 +101,7 @@ div:last-child {
 table {
     width: 60%;
     text-align:center;
+    margin: 0 auto;
 }
 
 table img{
@@ -151,5 +151,4 @@ td button:hover {
 #caixa-search{
     border:0;
     border-bottom: 3px solid black;
-    
 }
