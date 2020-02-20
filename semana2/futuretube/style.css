@@ -23,10 +23,11 @@ header{
 }
 
 #main{
-    min-height:82vh;
+    min-height:83vh;
     width: 100vw;
     display:flex;
     align-items: center;
+    justify-content: center;
 }
 
 article{
@@ -54,8 +55,28 @@ footer{
     height: 8vh;
     color:white;
     margin-top:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 video{
-    width: 80vw;
+    width: 70vw;
+    min-width: 280px;
+    margin-bottom: 10px;
+}
+
+#titulo{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+
+}
+
+@media screen and (max-width:500px){
+
+#caixa-pesquisa{
+    display: none;
+}
+
 }
