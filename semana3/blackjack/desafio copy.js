@@ -14,7 +14,7 @@ import comprarCarta from './naoMexer.js'
  * 
  */
 
- console.log("Bem vindo ao jogo de Blackjack!");
+console.log("Bem vindo ao jogo de Blackjack! - Desafio");
 
  if(confirm("Quer iniciar uma nova rodada ?")) {
 
@@ -22,24 +22,63 @@ import comprarCarta from './naoMexer.js'
    let MaoUsuario="";
    let computador=0;
    let MaoComputador="";
+   let carta;
+   let arrayUsuario=[];
+   let arrauComputador=[];
 
-   for (let i=0;i<2;i++){
+   carta = comprarCarta();
+   MaoUsuario = carta.texto;
+   usuario =carta.valor;  
 
-      const carta = comprarCarta();
+   carta = comprarCarta();
+   MaoComputador = carta.texto;
+   computador =carta.valor;
 
-      MaoUsuario = MaoUsuario + " " + carta.texto;
-      usuario +=carta.valor;
 
+   while (MaoUsuario==="A" && MaoComputador==="A"){
+
+
+   carta = comprarCarta();
+   MaoUsuario = carta.texto;
+   usuario =carta.valor;  
+
+   carta = comprarCarta();
+   MaoComputador = carta.texto;
+   computador =carta.valor;     
+
+
+   console.log("Os dois jogadores, compraram A, como a primeira carta.");
    }
+   
 
-   for (let i=0;i<2;i++){
 
-      const carta = comprarCarta();
 
-      MaoComputador = MaoComputador + " " + carta.texto;
-      computador +=carta.valor;
 
-   }
+   carta = comprarCarta();
+
+   MaoUsuario = MaoUsuario + " " + carta.texto;
+   usuario +=carta.valor;
+
+
+   carta = comprarCarta();
+
+   MaoComputador = MaoComputador + " " + carta.texto;
+   computador +=carta.valor;
+
+
+//inserir confirm e mostrar a mão
+
+// anterar a inserçao de valores para array
+
+
+
+
+
+
+
+
+
+
    
    console.log("Usuário - cartas: " + MaoUsuario + " - pontuação " + usuario);
    console.log("Computador - cartas: " + MaoComputador + " - pontuação " + computador);
@@ -57,5 +96,3 @@ import comprarCarta from './naoMexer.js'
 } else {
    console.log("o jogo acabou");
 }
-
-
