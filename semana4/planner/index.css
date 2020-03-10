@@ -1,0 +1,23 @@
+*{
+    background-color: grey;
+}
+
+header{
+    background-color: orange;
+    height: 40px;
+}
+
+main{
+    display: flex;
+}
+
+main div{
+    height: 200px;
+    width: 150px;
+    border: 1px solid red;
+    margin: 10px;
+}
+
+.classe-nova{
+    background-color: blue;
+}
