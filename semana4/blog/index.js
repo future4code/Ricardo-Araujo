@@ -48,3 +48,4 @@ function publicar(){
     }
 
 //não entendi para que preciso do array.
+
