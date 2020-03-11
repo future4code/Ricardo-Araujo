@@ -14,43 +14,56 @@
 <body>
 
   <header>
-    <select name="diaDaSemana" id="diaDaSemana">
-      <option value="segunda">Segunda-Feira</option>
-      <option value="terca">Terça-Feira</option>
-      <option value="quarta">Quarta-Feira</option>
-      <option value="quinta">Quinta-Feira</option>
-      <option value="sexta">Sexta-Feira</option>
-      <option value="sabado">Sábado</option>
-      <option value="domingo">Domingo</option>
-    </select>
 
-    <button onclick="insereTarefa()">clica em mim</button>
+    <h1>FuturePlanner</h1>
 
-    <input type="text">
+    <div>
+      <select name="diaDaSemana" id="diaDaSemana">
+        <option value="segunda">Segunda-Feira</option>
+        <option value="terca">Terça-Feira</option>
+        <option value="quarta">Quarta-Feira</option>
+        <option value="quinta">Quinta-Feira</option>
+        <option value="sexta">Sexta-Feira</option>
+        <option value="sabado">Sábado</option>
+        <option value="domingo">Domingo</option>
+      </select>
 
+      <input type="text">
+
+      <button onclick="insereTarefa()">clica em mim</button>
+    </div>
   </header>
 
   <main>
 
-    <div id="segunda">Segunda-Feira</div>
-    <div id="terca">Terça-Feira</div>
-    <div id="quarta">Quarta-Feira</div>
-    <div id="quinta">Quinta-Feira</div>
-    <div id="sexta">Sexta-Feira</div>
-    <div id="sabado">Sábado</div>
-    <div id="domingo">Domingo</div>
+    <div id="segunda">
+      <p>Segunda-Feira</p>
+    </div>
+    <div id="terca">
+      <p>Terça-Feira</p>
+    </div>
+    <div id="quarta">
+      <p>Quarta-Feira</p>
+    </div>
+    <div id="quinta">
+      <p>Quinta-Feira</p>
+    </div>
+    <div id="sexta">
+      <p>Sexta-Feira</p>
+    </div>
+    <div id="sabado">
+      <p>Sábado</p>
+    </div>
+    <div id="domingo">
+      <p>Domingo</p>
+    </div>
 
   </main>
 
 
-
-
-
-<button onclick="limparLista()" >refresh</button>
-
-
-
-
+  <footer>
+    <button onclick="limparLista()">Limpar a lista</button>
+  </footer>
 
 
 </body>
