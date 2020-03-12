@@ -7,6 +7,7 @@ class classeDespesas {
 }
 
 const arrayDespesas = [];
+let soma = Number();
 
 function cadastrar() {
     const valor = document.getElementById("valor");
@@ -24,7 +25,9 @@ function cadastrar() {
         tipoDespesa.value="";
         descricao.value="";
 
+        somaTudo()
         mostrarExtrato()
+        
     } else {
         alert("Digite valores validos");
     }
@@ -40,8 +43,8 @@ function filtraValores(){
 
     const arrayFiltro = arrayDespesas.filter((elemento,index,array)=>{
         return elemento.tipoDespesa === filtroTipo.value &&
-        elemento.valor>= filtroMin.value && 
-        elemento.valor<= filtroMax.value;
+               elemento.valor>= Number(filtroMin.value) && 
+               elemento.valor<= Number(filtroMax.value);
     })
 
     arrayFiltro.forEach((elemento, index, array) => {
@@ -56,7 +59,7 @@ function filtraValores(){
 function mostrarExtrato(){
     const areaTexto = document.getElementById("extrato")
 
-        areaTexto.innerHTML = ""
+        // areaTexto.innerHTML = ""
 
     arrayDespesas.forEach((elemento, index, array) => {
         areaTexto.innerHTML += elemento.valor;
@@ -64,4 +67,29 @@ function mostrarExtrato(){
         areaTexto.innerHTML += elemento.descricao;
     })
 
+}
+
+function somaTudo(){
+    const areaTexto = document.getElementById("extrato")
+        soma=0; //sei que se minha array fosse gigante eu teria problemas para refazer a soma inteira, mas deu preguiça de fazer certo.
+
+        areaTexto.innerHTML = ""
+
+    arrayDespesas.forEach((elemento,index,array) =>{
+        soma += Number(elemento.valor);
+    })
+
+    areaTexto.innerHTML +="total é : " +soma +" extrato -->";
+}
+
+function limparFilto(){
+    const post = document.getElementById("areaTexto");
+
+    post.innerHTML = ""
+
+    arrayDespesas.forEach((elemento, index, array) => {
+        post.innerHTML += elemento.valor;
+        post.innerHTML += elemento.tipoDespesa;
+        post.innerHTML += elemento.descricao;
+    })
 }
