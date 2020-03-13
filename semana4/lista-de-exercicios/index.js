@@ -302,9 +302,6 @@ console.log(multiplicaArray(arrayPadrao,3));
 
 
 3.
-
-*/
-
 const pessoas = [
 	{ nome: "Paula", idade: 12, altura: 1.8},
 	{ nome: "João", idade: 20, altura: 1.3},
@@ -335,3 +332,71 @@ function naoPodeBrincar(array){
 }
 
 console.log(naoPodeBrincar(pessoas));
+
+4.
+const consultas = [
+    { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+    { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+    { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+    { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+]
+
+function email(array) {
+    
+    let arrayEmail = [];
+
+    array.forEach(element => {
+
+        let saudacao;
+        let lembrar;
+
+
+        if (element.genero === "masculino") {
+            saudacao = "Sr.";
+            lembrar = "Lembrá-lo";
+        } else {
+            saudacao = "Sra.";
+            lembrar = "Lembrá-la";
+        }
+
+        if (element.cancelada) {
+            arrayEmail.push(`Olá, ${saudacao} ${element.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${element.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`)
+        } else {
+            arrayEmail.push(`Olá, ${saudacao} ${element.nome}. Infelizmente, sua consulta marcada para o dia ${element.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`)
+        }
+    });
+
+    return arrayEmail;
+}
+
+
+console.log(email(consultas));
+
+
+5.
+const contas = [
+    { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+    { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+    { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+    { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+    { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+    { cliente: "Soter", saldoTotal: 1200, compras: [] }
+]
+
+function saldoTotal(array) {
+
+    array.forEach((elemento, index, array) => {
+        let soma = 0;
+
+        for (let valor of elemento.compras) {
+            soma += Number(valor);
+        }
+
+        elemento.saldoTotal -= soma;
+    })
+    return array
+}
+
+console.log(saldoTotal(contas));
+
+*/
