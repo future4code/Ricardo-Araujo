@@ -286,5 +286,52 @@ function filtraCrianca(array){
 console.log(filtraCrianca(arrayPadrao));
 
 2.
+//a. e b. -> fiz de uma forma que mesma função resolve os dois casos.
+const arrayPadrao = [1, 2, 3, 4, 5, 6];
+
+function multiplicaArray (array,multiplicador){
+    
+    const arrayMultiplicada = array.map((elemento,index,array) =>{
+        return Number(elemento)*multiplicador;
+    })
+
+    return arrayMultiplicada;
+}
+
+console.log(multiplicaArray(arrayPadrao,3));
+
+
+3.
+
 */
-const array = [1, 2, 3, 4, 5, 6]
+
+const pessoas = [
+	{ nome: "Paula", idade: 12, altura: 1.8},
+	{ nome: "João", idade: 20, altura: 1.3},
+	{ nome: "Pedro", idade: 15, altura: 1.9},
+	{ nome: "Luciano", idade: 22, altura: 1.8},
+	{ nome: "Artur", idade: 10, altura: 1.2},
+	{ nome: "Soter", idade: 70, altura: 1.9}
+]
+
+function podeBrincar(array){
+
+    const pode = array.filter((elemento,index,array)=>{
+        return elemento.altura>=1.5 && elemento.idade>14 && elemento.idade<60;
+    })
+
+    return pode;
+
+}
+
+
+function naoPodeBrincar(array){
+
+    const naoPode = array.filter((elemento,index,array)=>{
+        return !(elemento.altura>=1.5 && elemento.idade>14 && elemento.idade<60);
+    })
+
+    return naoPode;
+}
+
+console.log(naoPodeBrincar(pessoas));
