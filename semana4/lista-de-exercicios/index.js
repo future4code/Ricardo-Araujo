@@ -96,6 +96,57 @@ const meuTriangulo = triangulo(-5,5,7);
 
 console.log(meuTriangulo);
 
-5. */
+5. 
+qualMaior(25, 50);
+
+function qualMaior(a, b) {
+
+    let maior = a;
+    let menor = b;
+
+    if (a === b) {
+        console.log("Os numeros são iguais");
+    } else {
+        if (a > b) {
+            console.log("O maior é: " + a);
+            maior = a;
+            menor = b;
+        } else {
+            console.log("O maior é: " + b);
+            maior = b;
+            menor = a;
+        }
+    }
+    divisivel(maior, menor);
+    diferenca(maior, menor);
+}
+
+function divisivel(maior, menor) {
+
+    if (maior !== menor) {
+        console.log(menor + " não é divisivel por " + maior);
+
+        if (maior % menor === 0) {
+            console.log(maior + " é divisivel por " + menor);
+        } else {
+            console.log(maior + " não é divisivel por " + menor);
+        }
+    }else{
+        if (maior % menor === 0) {
+            console.log(maior + " é divisivel por " + menor);
+        } else {
+            console.log(maior + " não é divisivel por " + menor);
+        }
+    }
+}
+
+function diferenca(maior, menor) {
+
+    let diferenca = maior - menor;
+    console.log("A diferença entre eles é: " + diferenca);
+
+}
+
+*/
 
 
