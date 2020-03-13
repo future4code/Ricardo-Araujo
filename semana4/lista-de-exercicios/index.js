@@ -41,7 +41,7 @@ menor = arrayDesordenado[0];
 console.log("arrayOrdenada "+ arrayOrdenada);
 
 let arrayAuxiliar=[];
-	//tiro o menor -> daria para fazer com filter, na real acho que vou fazer isto no fds.
+	//tiro o menor -> acho que daria para fazer com filter, na real acho que vou tentar isto no fds.
 for (let id = 0; id<arrayDesordenado.length; id++){
 
 	if(id !== indexMenor){
@@ -147,6 +147,144 @@ function diferenca(maior, menor) {
 
 }
 
+
+
+//Exercícios de Funções
+
+1. 
+const arrayDeNumeros = [2, 4, 6, 7, 83, 54, 63, 5, 6, 0];
+
+let primeiroMaior = arrayDeNumeros[0];
+let primeiroMenor = arrayDeNumeros[0];
+let segundoMaior = arrayDeNumeros[0];
+let segundoMenor = arrayDeNumeros[0];
+
+
+for (let i = 0; i < arrayDeNumeros.length; i++) { 
+
+    if (arrayDeNumeros[i] > primeiroMaior) {
+        primeiroMaior = arrayDeNumeros[i];
+    }else if (arrayDeNumeros[i]>segundoMaior){
+        segundoMaior = arrayDeNumeros[i];
+    }
+
+    if (arrayDeNumeros[i] < primeiroMenor) {
+        primeiroMenor = arrayDeNumeros[i]
+        indexDoPrimeiroMenor = i;
+    }else if (arrayDeNumeros[i]<segundoMenor){
+        segundoMenor = arrayDeNumeros[i]
+    }
+
+}
+
+console.log(arrayDeNumeros);
+console.log("primeiro maior " + primeiroMaior);
+console.log("segundo maior " + segundoMaior);
+console.log("primeiro menor " + primeiroMenor);
+console.log("segundo menor "+ segundoMenor);
+
+
+2.
+const funcaoNaoNomeada = function() {alert ("Hello World!")}
+console.log(funcaoNaoNomeada);
+
+const invocarFuncaoNaoNomeada = funcaoNaoNomeada();
+
+
+//Exercícios de Objetos
+
+1. podemos utilizar lista com objetos, quando queremos naquele index da lista guardar um objeto que contém suas 
+propriedades - ex. uma lista de filmes, sendo que cada filme tem suas propriedades, como titulo, atores, etc.
+
+
+
+2.
+
+class retangulo{
+    constructor(aba, beb){
+        this.largura = aba;
+        this.altura = beb;
+        this.perimetro = 2 * (this.largura+this.altura);
+        this.area = this.largura*this.altura;
+    }
+}
+
+function criaRetangulo (lado1,lado2){
+
+    const meuRetangulo = new retangulo (lado1,lado2);
+
+    return meuRetangulo;
+
+}
+
+const testeRetangulo = criaRetangulo(11,12);
+console.log(testeRetangulo);
+
+
+
+3.
+
+const meuFilmeFavorito = {
+    nome: "300",
+    ano: "2007",
+    diretor: "Zack Snyder",
+    atores: "Gerard Butler, Rodrigo Santoro e muito mais"
+}
+
+console.log("Venha assistir ao filme " + meuFilmeFavorito.nome + ", de " + meuFilmeFavorito.ano + 
+", dirigido por " + meuFilmeFavorito.diretor + " e estrelado por " + meuFilmeFavorito.atores);
+
+
+4.
+const pessoa = { 
+    nome: "Alice",
+    idade: "8",
+    email: "alice@paisdasmaravilhas.com",
+    endereço: "um livro ai"
+}
+
+function anonimizarPessoa(objeto){
+    const anonimo = {...objeto,nome: 'ANONIMO'};
+    return anonimo;
+}
+
+console.log(pessoa);
+console.log(anonimizarPessoa(pessoa));
+
+
+//Exercícios de Funções de array
+
+1.
+
+const arrayPadrao = [
+    { nome: "Pedro", idade: 20 },
+    { nome: "João", idade: 10 },
+    { nome: "Paula", idade: 12 },
+    { nome: "Artur", idade: 89 }
+];
+
+//a.
+function filtraAdulto(array) {
+
+    const filtrada = array.filter((elemento) => {
+        return Number(elemento.idade) >= 20;
+    })
+
+    return filtrada
+}
+
+//b.
+function filtraCrianca(array){
+
+    const filtrada = array.filter((elemento) => {
+        return Number(elemento.idade) <= 20;
+    })
+
+    return filtrada
+}
+
+console.log(filtraCrianca(arrayPadrao));
+
+2.
 */
-
-
+const array = [1, 2, 3, 4, 5, 6]
