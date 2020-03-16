@@ -148,40 +148,49 @@ function diferenca(maior, menor) {
 }
 
 
-
 //Exercícios de Funções
 
-1. 
-const arrayDeNumeros = [2, 4, 6, 7, 83, 54, 63, 5, 6, 0];
+1.
+const arrayDeNumeros = [3, 94, 6, 7, 83, 54, 63, 1, 6, 10];
 
-let primeiroMaior = arrayDeNumeros[0];
-let primeiroMenor = arrayDeNumeros[0];
-let segundoMaior = arrayDeNumeros[0];
-let segundoMenor = arrayDeNumeros[0];
+function achaExtremos(array) {
 
+    let primeiroMaior = null;
+    let primeiroMenor = Infinity;
+    let segundoMaior = null;
+    let segundoMenor = Infinity;
+    let indexDoPrimeiroMaior;
+    let indexDoPrimeiroMenor;
 
-for (let i = 0; i < arrayDeNumeros.length; i++) { 
-
-    if (arrayDeNumeros[i] > primeiroMaior) {
-        primeiroMaior = arrayDeNumeros[i];
-    }else if (arrayDeNumeros[i]>segundoMaior){
-        segundoMaior = arrayDeNumeros[i];
+    for (let i = 0; i < array.length; i++) {
+        if (arrayDeNumeros[i] > primeiroMaior) {
+            primeiroMaior = arrayDeNumeros[i];
+            indexDoPrimeiroMaior = i;
+        } else if (arrayDeNumeros[i] > segundoMaior) {
+            segundoMaior = arrayDeNumeros[i];
+        }
+        if (arrayDeNumeros[i] < primeiroMenor) {
+            primeiroMenor = arrayDeNumeros[i]
+            indexDoPrimeiroMenor = i;
+        } else if (arrayDeNumeros[i] < segundoMenor) {
+            segundoMenor = arrayDeNumeros[i];
+        }
     }
 
-    if (arrayDeNumeros[i] < primeiroMenor) {
-        primeiroMenor = arrayDeNumeros[i]
-        indexDoPrimeiroMenor = i;
-    }else if (arrayDeNumeros[i]<segundoMenor){
-        segundoMenor = arrayDeNumeros[i]
+    if (segundoMaior < array[0] && array[0] !== primeiroMaior) {
+        segundoMaior = array[0];
+    } else if (segundoMenor > array[0] && array[0] !== primeiroMenor) {
+        segundoMenor = array[0];
     }
 
+    console.log(arrayDeNumeros);
+    console.log("primeiro maior " + primeiroMaior);
+    console.log("segundo maior " + segundoMaior);
+    console.log("primeiro menor " + primeiroMenor);
+    console.log("segundo menor " + segundoMenor);
 }
 
-console.log(arrayDeNumeros);
-console.log("primeiro maior " + primeiroMaior);
-console.log("segundo maior " + segundoMaior);
-console.log("primeiro menor " + primeiroMenor);
-console.log("segundo menor "+ segundoMenor);
+achaExtremos(arrayDeNumeros);
 
 
 2.
@@ -193,7 +202,7 @@ const invocarFuncaoNaoNomeada = funcaoNaoNomeada();
 
 //Exercícios de Objetos
 
-1. podemos utilizar lista com objetos, quando queremos naquele index da lista guardar um objeto que contém suas 
+1. podemos utilizar lista com objetos, quando queremos naquele index da lista guardar um objeto que contém suas
 propriedades - ex. uma lista de filmes, sendo que cada filme tem suas propriedades, como titulo, atores, etc.
 
 
@@ -231,12 +240,12 @@ const meuFilmeFavorito = {
     atores: "Gerard Butler, Rodrigo Santoro e muito mais"
 }
 
-console.log("Venha assistir ao filme " + meuFilmeFavorito.nome + ", de " + meuFilmeFavorito.ano + 
+console.log("Venha assistir ao filme " + meuFilmeFavorito.nome + ", de " + meuFilmeFavorito.ano +
 ", dirigido por " + meuFilmeFavorito.diretor + " e estrelado por " + meuFilmeFavorito.atores);
 
 
 4.
-const pessoa = { 
+const pessoa = {
     nome: "Alice",
     idade: "8",
     email: "alice@paisdasmaravilhas.com",
@@ -290,7 +299,7 @@ console.log(filtraCrianca(arrayPadrao));
 const arrayPadrao = [1, 2, 3, 4, 5, 6];
 
 function multiplicaArray (array,multiplicador){
-    
+
     const arrayMultiplicada = array.map((elemento,index,array) =>{
         return Number(elemento)*multiplicador;
     })
@@ -342,7 +351,7 @@ const consultas = [
 ]
 
 function email(array) {
-    
+
     let arrayEmail = [];
 
     array.forEach(element => {
