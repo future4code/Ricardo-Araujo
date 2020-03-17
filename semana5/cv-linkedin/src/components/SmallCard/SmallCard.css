@@ -1,0 +1,8 @@
+.SmallCard{
+    border: 3px solid blue;
+    display: flex;
+}
+
+.SmallCard p:nth-child(2){
+    font-weight: bold;
+}
