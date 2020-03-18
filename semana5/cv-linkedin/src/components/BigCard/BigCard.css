@@ -1,0 +1,24 @@
+/* ainda tenho que arrumar. */
+
+.BigCard{
+    border: 3px solid red;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.BigCard section{
+    display: flex;
+}
+
+.BigCard img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    margin: auto;
+}
+
+.BigCard section:nth-child(2) {
+    display: inline;
+    align-self: center;
+}
