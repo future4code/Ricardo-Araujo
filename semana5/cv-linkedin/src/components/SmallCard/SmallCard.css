@@ -1,8 +1,13 @@
 .SmallCard{
     border: 3px solid blue;
     display: flex;
+    align-items: center;
 }
 
-.SmallCard p:nth-child(2){
-    font-weight: bold;
+.SmallCard img{
+    height: 40px;
+    margin:10px 0px 10px 10px;
+}
+.SmallCard strong{
+    margin: 10px;
 }

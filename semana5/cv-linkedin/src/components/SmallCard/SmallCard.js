@@ -5,8 +5,8 @@ function SmallCard(props) {
     return (
         <div className="SmallCard">
             <img src={props.img} />
-            <p>{props.tipo}</p>
-            <p>{props.texto}</p>
+            <strong>{props.tipo}</strong>
+            <span>{props.texto}</span>
         </div>
     )
 }
