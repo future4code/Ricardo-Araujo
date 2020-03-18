@@ -7,6 +7,12 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import iconeFavoritoPreto from '../../img/bookmark-24px.svg'
+import iconeFavoritoBranco from '../../img/bookmark_border-24px.svg'
+import { IconeFavorito } from '../iconeFavorito/IconeFavorito'
+import iconeShare from './../../img/forward-24px.svg'
+import { SecaoShare } from '../SecaoShare/SecaoShare'
+
 
 class Post extends React.Component {
   constructor(props) {
@@ -16,7 +22,10 @@ class Post extends React.Component {
       curtido: false,
       numeroCurtidas: 0,
       comentando: false,
-      numeroComentarios: 0
+      numeroComentarios: 0,
+      favorito: false,
+      share:false,
+      mensagemShare:"teste"
     }
   }
 
@@ -49,6 +58,19 @@ class Post extends React.Component {
     })
   }
 
+  onClickFavorito = () => {
+    this.setState({
+      favorito: !this.state.favorito
+    })
+  }
+
+  onClickShare = () => {
+    this.setState({
+      share: !this.state.share
+    })
+  }
+
+
   render() {
     let iconeCurtida
 
@@ -58,11 +80,24 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoBranco
     }
 
+    let iconeFavorito
+    if(this.state.favorito) {
+      iconeFavorito = iconeFavoritoPreto
+    } else {
+      iconeFavorito = iconeFavoritoBranco
+    }
+
 
     let componenteComentario
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
+    }
+
+    let componenteShare
+
+    if(this.state.share) {
+      componenteShare = <SecaoShare aoEnviar={this.onClickBotaoShare}/>
     }
 
     return <div className={'post-container'}>
@@ -85,9 +120,23 @@ class Post extends React.Component {
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
+
+        <IconeFavorito
+          icone={iconeFavorito}
+          onClickIcone={this.onClickFavorito}
+        />
+
+        <IconeFavorito
+          icone={iconeShare}
+          onClickIcone={this.onClickShare}
+        />
+
+
       </div>
       {componenteComentario}
+      {componenteShare}
     </div>
+    
   }
 }
 
