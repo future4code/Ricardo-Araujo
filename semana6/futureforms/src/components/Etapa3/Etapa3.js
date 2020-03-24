@@ -11,21 +11,20 @@ class Etapa3 extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            nome: "",
-            idade: "",
-            email: "",
-            escolaridade: "",
+            pqNaoTerminou: "",
+            cursoComplementar: "",
         }
     }
 
-onChangeNome = event => {this.setState({nome: event.target.value})}
-onChangeIdade = event => {this.setState({idade: event.target.value})}
-onChangeEmail = event => {this.setState({email: event.target.value})}
-onChangeEscolaridade = event => {this.setState({escolaridade: event.target.value})}
+onChangePqNaoTerminou = event => {this.setState({pqNaoTerminou: event.target.value})}
+onChangeCursoComplementar = event => {this.setState({cursoComplementar: event.target.value})}
 
-onClickEtapa1 = () =>{
-    console.log(this.state.formulario)
-    this.props.funcaoApp(this.state.formulario)
+
+onClickEtapa3 = () =>{
+
+    const novaArray = {pqNaoTerminou: this.state.pqNaoTerminou, cursoComplementar: this.state.cursoComplementar}
+
+    this.props.funcaoApp(novaArray)
 }
 
 render(){
@@ -33,14 +32,15 @@ render(){
         <Container>
     
             <label>5. Por que não terminou um curso de graduação?</label><br/>
-            <input onChange={this.onChangeNome}></input><br/><br/>
-            <select value={this.state.valorInputEscolaridade} onClick={this.onClickInputEscolaridade} required>
-                    <option value="Curso técnico">Ensino Médio Incompleto</option>
-                    <option value="Curso de inglês">Ensino Médio Completo</option>
-                    <option value="Não fiz curso complementar">Ensino Superior Incompleto</option>
+            <input onChange={this.onChangePqNaoTerminou}></input><br/><br/>
+            <label>6. Fez algum curso complementar ?</label><br/>
+            <select onChange={this.onChangeCursoComplementar} value={this.state.cursoComplementar} required>
+                    <option value="Curso técnico">Curso técnico</option>
+                    <option value="Curso de inglês">Curso de inglês</option>
+                    <option value="Não fiz curso complementar">Não fiz curso complementar</option>
             </select><br/><br/>
 
-            <button onClick={this.onClickEtapa1}>enviar</button><br/>
+            <button onClick={this.onClickEtapa3}>enviar</button><br/>
         
         </Container>
     );

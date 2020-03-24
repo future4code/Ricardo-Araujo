@@ -11,21 +11,20 @@ class Etapa2 extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            nome: "",
-            idade: "",
-            email: "",
-            escolaridade: "",
+            curso: "",
+            unidadeDeEnsino: "",
         }
     }
 
-onChangeNome = event => {this.setState({nome: event.target.value})}
-onChangeIdade = event => {this.setState({idade: event.target.value})}
-onChangeEmail = event => {this.setState({email: event.target.value})}
-onChangeEscolaridade = event => {this.setState({escolaridade: event.target.value})}
+onChangeCurso = event => {this.setState({curso: event.target.value})}
+onChangeUnidade = event => {this.setState({unidadeDeEnsino: event.target.value})}
 
-onClickEtapa1 = () =>{
-    console.log(this.state.formulario)
-    this.props.funcaoApp(this.state.formulario)
+
+onClickEtapa2 = () =>{
+
+    const novaArray = {curso: this.state.curso, unidadeDeEnsino: this.state.unidadeDeEnsino}
+
+    this.props.funcaoApp(novaArray)
 }
 
 render(){
@@ -33,11 +32,11 @@ render(){
         <Container>
     
             <label>5. Qual o curso?</label><br/>
-            <input onChange={this.onChangeNome}></input><br/><br/>
+            <input onChange={this.onChangeCurso}></input><br/><br/>
             <label>6. Qual a unidade de ensino?</label><br/>
-            <input onChange={this.onChangeIdade}></input><br/><br/>
+            <input onChange={this.onChangeUnidade}></input><br/><br/>
 
-            <button onClick={this.onClickEtapa1}>enviar</button><br/>
+            <button onClick={this.onClickEtapa2}>enviar</button><br/>
         
         </Container>
     );

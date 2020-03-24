@@ -24,8 +24,9 @@ onChangeEmail = event => {this.setState({email: event.target.value})}
 onChangeEscolaridade = event => {this.setState({escolaridade: event.target.value})}
 
 onClickEtapa1 = () =>{
+    const novaArray = {nome: this.state.nome, idade: this.state.idade, email: this.state.email, escolaridade: this.state.escolaridade}
 
-    this.props.funcaoApp()
+    this.props.funcaoApp(novaArray)
 }
 
 render(){
@@ -40,7 +41,7 @@ render(){
             <label>3. Qual seu e-mail?</label><br/>
             <input onChange={this.onChangeEmail}></input><br/><br/>
             <label>4. Qual sua escolaridade?</label><br/>
-            <select value={this.state.valorInputEscolaridade} onClick={this.onClickInputEscolaridade} required>
+            <select value={this.state.valorInputEscolaridade} onChange={this.onChangeEscolaridade} required>
                     <option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
                     <option value="Ensino Médio Completo">Ensino Médio Completo</option>
                     <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>

@@ -9,14 +9,40 @@ class App extends React.Component {
     super(props);
 
     this.state={
+      formulario: [{
+        nome:"",
+        idade:"",
+        email:"",
+        escolaridade:"",
+        curso:"",
+        unidadeDeEnsino:"",
+        pqNaoTerminou:"",
+        cursoComplementar:"",
+      }],
       etapa: 1,
     }
   }
 
-funcaoApp = () => {
-  console.log("teste")
-  this.setState({etapa: this.state.etapa+ 1});
-  console.log(this.state.etapa)
+funcaoApp = (novaArray) => {
+  const auxiliar = [...this.state.formulario, novaArray]
+
+  this.setState({formulario: auxiliar, etapa: this.state.etapa + 1});
+}
+
+funcaoInsereFormulario=()=>{
+  const auxiliar = this.state.formulario.map((elemento, index) => {
+    return (<div key={index}>
+              <p>{elemento.nome}</p>
+              <p>{elemento.idade}</p>
+              <p>{elemento.email}</p>
+              <p>{elemento.escolaridade}</p>
+              <p>{elemento.curso}</p>
+              <p>{elemento.unidadeDeEnsino}</p>
+              <p>{elemento.pqNaoTerminou}</p>
+              <p>{elemento.cursoComplementar}</p>
+            </div>)
+  });
+  return auxiliar;
 }
 
 defineEtapa = () =>{
@@ -32,8 +58,10 @@ defineEtapa = () =>{
     break;
     case 3:
     etapa = <Etapa3 funcaoApp={this.funcaoApp}/>
+    break;
     default:
     etapa = <EtapaFim funcaoApp={this.funcaoApp}/>
+    break;
   }
 
 return etapa;
@@ -41,16 +69,15 @@ return etapa;
 }
 
 
-
-
-
 render(){  
+
   return (
     <div className="App">
-      {/* <Etapa1 funcaoApp={this.funcaoApp}/> */}
 
       {this.defineEtapa()}
 
+      {this.funcaoInsereFormulario()}
+      
     </div>
   );
 
@@ -59,3 +86,5 @@ render(){
 }
 
 export default App;
+
+//futureforms-ricardo.surge.sh
