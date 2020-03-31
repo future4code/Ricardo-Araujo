@@ -10,7 +10,7 @@ class Form extends React.Component{
         }
     }
 
-onChangeNome=(event)=>{}   
+onChangeNome=(event)=>{this.setState{inputName: this.state.inputName}}   
 onChangeEmail=(event)=>{}   
 
 
