@@ -1,5 +1,16 @@
 import React from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const ContainerForm = styled.div`
+    display:flex;
+    flex-direction: column;
+`
+const ContainerInput = styled.div`
+    margin:0 auto;
+    margin-top:100px;
+
+`
 
 class Form extends React.Component{
     constructor(props){
@@ -10,14 +21,14 @@ class Form extends React.Component{
         }
     }
 
-onChangeNome=(event)=>{this.setState{inputName: this.state.inputName}}   
-onChangeEmail=(event)=>{}   
+onChangeNome=(event)=>{this.setState({inputName: event.target.value})};
+onChangeEmail=(event)=>{this.setState({inputEmail: event.target.value})}   
 
 
-createUser = () =>{
+adicionaUsuario = () =>{
 const body = {
-    name: "Banana4",
-    email: "bananadasorte3@gmail.com"
+    name: this.state.inputName,
+    email: this.state.inputEmail
 }
 axios
 .post(
@@ -29,34 +40,30 @@ axios
         }
     }
 ).then(response=>{
-        alert("Dados Salvos!")
+        alert("Usuário cadastrado com sucesso!")
     })
     .catch(error=>{
-        alert("Algo não deu certo")
+        alert("Algo deu errado, tente novamente!")
     })
 }
+
+
 
 render(){
     return(
-        <div>
+        <ContainerForm>
             {this.props.children}
-            <div>
+            <ContainerInput>
                 <label>Nome: </label>
-                <input></input><br/>
+                <input onChange={this.onChangeNome}></input><br/>
                 <label>E-mail: </label>
-                <input></input><br/><br/>
-                <button onClick={this.createUser}>Salvar</button>
+                <input onChange={this.onChangeEmail}></input><br/><br/>
+                <button onClick={this.adicionaUsuario}>Salvar</button>
 
-            </div>
-        </div>
-
+            </ContainerInput>
+        </ContainerForm>
     )
-
-
-
-
 }
-
 
 
 }
