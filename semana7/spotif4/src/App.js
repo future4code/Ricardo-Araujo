@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home'
 import CreatePlaylist from './components/CreatePlaylist';
 import PlayList from './components/PlayList'
+import FreeSongs from './components/FreeSongs'
 
 const ContainerApp = styled.div`
   background-color:pink;
@@ -38,7 +39,8 @@ class App extends React.Component {
     super(props)
     this.state={
       screen: "home",
-      playlistId:""
+      playlistId:"",
+      playListName:""
     }
   }
 
@@ -47,8 +49,8 @@ setScreen=(buttomValue)=>{
   this.setState({screen: buttomValue});
 }
 
-choosePlaylist=(id)=>{
-  this.setState({playlistId: id});
+choosePlaylist=(id,name)=>{
+  this.setState({playlistId: id, playListName: name});
 }
 
 visibleScreen = () =>{
@@ -61,8 +63,11 @@ visibleScreen = () =>{
       return <CreatePlaylist/>
 
     case "playlist":
-      return <PlayList playlistId={this.state.playlistId}/>
-      
+      return <PlayList playlistId={this.state.playlistId} playListName={this.state.playListName} />
+
+    case "freesongs":
+      return <FreeSongs/>
+
     default:
       return <div>fail</div>
   }

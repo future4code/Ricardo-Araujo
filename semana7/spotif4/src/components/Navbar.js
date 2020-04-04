@@ -24,6 +24,7 @@ render(){
       <button onClick={()=>this.onClickChooseScreen("home")} >HOME</button>
       <button onClick={()=>this.onClickChooseScreen("createplaylist")}>CREATE PLAYLIST</button>
       <button onClick={()=>this.onClickChooseScreen("search")}>SEARCH</button>
+      <button onClick={()=>this.onClickChooseScreen("freesongs")}>MÚSICAS GRÁTIS</button>
     </ContainerNavbar>
   );
 }

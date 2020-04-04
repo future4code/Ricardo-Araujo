@@ -1,8 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios'
+import axios from 'axios';
+import ReactPlayer from 'react-player'
 
 const ContainerHome = styled.div`
+`
+
+const EachPlaylist = styled.div`
+    border: 1px solid black;
+    :hover{
+        background-color:purple;
+    }
 `
 
 
@@ -33,10 +41,13 @@ GetAllPlayList = () =>{
 
 renderPlaylist = () =>{
     const list = this.state.allPlayList.map((song)=>{
-        return <div key={song.id}>
-                    <span onDoubleClick={()=>this.playListInfo(song.id)}>{song.name}</span> 
-                    <span onClick={()=>this.deletePlaylist(song.id)}>X</span>
-                </div>
+        return <EachPlaylist key={song.id} onDoubleClick={()=>this.playListInfo(song.id, song.name)}>
+                    <img src={require("../images/Unknown.jpg")} alt={"bob"} />
+                    <div>
+                        <span>{song.name}</span> 
+                        <span onClick={()=>this.deletePlaylist(song.id)}>X</span>
+                    </div>
+                </EachPlaylist>
     })
     return list;
 }
@@ -52,12 +63,12 @@ deletePlaylist=(id)=>{
     })
 }
 
-playListInfo=(idOfPlayList)=>{
+playListInfo=(idOfPlayList, nameOfPlaylist)=>{
     axios.get(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${idOfPlayList}/songs`,{
         headers:{"auth": "ricardo-hamilton"}
     }).then((response)=>{
         alert("cheguei na busca de musicas")
-        this.props.choosePlaylist(response.data.result.musics);
+        this.props.choosePlaylist(response.data.result.musics, nameOfPlaylist);
         this.props.setScreen("playlist");
            
     }).catch((error)=>{
@@ -72,6 +83,8 @@ render(){
   return (
     <ContainerHome>
       { (this.state.allPlayList) && this.renderPlaylist() }
+      <ReactPlayer height="200px" width="200px" url="https://www.youtube.com/watch?v=7SJdSDOuVr0" controls={true}/>
+      {/* <iframe width="200" height="200" src="https://www.youtube.com/embed/7SJdSDOuVr0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen /> */}
     </ContainerHome>
   );
 }

@@ -56,7 +56,7 @@ addSong=(playlistId)=>{
     const body ={
         name: this.state.inputSongName,
         artist: this.state.inputSongArtist,
-        url: "https://www.youtube.com/watch?v=KR4DjYczINM"
+        url: this.state.inputSongUrl
     };
 
     axios.post(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${playlistId}/songs`,body,{
