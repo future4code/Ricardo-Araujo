@@ -39,8 +39,9 @@ class App extends React.Component {
     super(props)
     this.state={
       screen: "home",
-      playlistId:"",
-      playListName:""
+      musicsOfPlayList:"",
+      playListName:"",
+      playListId:""
     }
   }
 
@@ -49,8 +50,8 @@ setScreen=(buttomValue)=>{
   this.setState({screen: buttomValue});
 }
 
-choosePlaylist=(id,name)=>{
-  this.setState({playlistId: id, playListName: name});
+choosePlaylist=(musics,name,id)=>{
+  this.setState({musicsOfPlayList: musics, playListName: name, playListId: id});
 }
 
 visibleScreen = () =>{
@@ -63,7 +64,9 @@ visibleScreen = () =>{
       return <CreatePlaylist/>
 
     case "playlist":
-      return <PlayList playlistId={this.state.playlistId} playListName={this.state.playListName} />
+      return <PlayList musicsOfPlayList={this.state.musicsOfPlayList} 
+                       playListName={this.state.playListName} 
+                       playListId={this.state.playListId}/>
 
     case "freesongs":
       return <FreeSongs/>

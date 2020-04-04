@@ -25,7 +25,7 @@ getFreeSongs = ()=>{
   
   const renderSongs = arrayFreeSongs.map((song,index)=>{
     const numberSong = (index + 1);
-    return (<div>
+    return (<div key={index}>
               <span>{numberSong}</span>
               <audio controls src={song}/>
             </div>)

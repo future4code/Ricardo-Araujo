@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import ReactPlayer from 'react-player'
 
 const ContainerHome = styled.div`
 `
@@ -63,17 +62,21 @@ deletePlaylist=(id)=>{
     })
 }
 
+
+//isto deveria estar no Playlist.js
 playListInfo=(idOfPlayList, nameOfPlaylist)=>{
-    axios.get(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${idOfPlayList}/songs`,{
-        headers:{"auth": "ricardo-hamilton"}
-    }).then((response)=>{
-        alert("cheguei na busca de musicas")
-        this.props.choosePlaylist(response.data.result.musics, nameOfPlaylist);
-        this.props.setScreen("playlist");
+    // axios.get(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${idOfPlayList}/songs`,{
+    //     headers:{"auth": "ricardo-hamilton"}
+    // }).then((response)=>{
+    //     this.props.choosePlaylist(response.data.result.musics, nameOfPlaylist, idOfPlayList);
+    //     this.props.setScreen("playlist");
            
-    }).catch((error)=>{
-        alert("não retornou a lista de musicas")
-    })
+    // }).catch((error)=>{
+    //     alert("Error on acess play list info");
+    // })
+
+    {this.props.choosePlaylist(nameOfPlaylist, idOfPlayList)};
+
 }
 
 
@@ -83,8 +86,7 @@ render(){
   return (
     <ContainerHome>
       { (this.state.allPlayList) && this.renderPlaylist() }
-      <ReactPlayer height="200px" width="200px" url="https://www.youtube.com/watch?v=7SJdSDOuVr0" controls={true}/>
-      {/* <iframe width="200" height="200" src="https://www.youtube.com/embed/7SJdSDOuVr0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen /> */}
+      
     </ContainerHome>
   );
 }
@@ -92,3 +94,6 @@ render(){
 }
 
 export default Home;
+
+//deixei aqui para referências futuras
+{/* <iframe width="200" height="200" src="https://www.youtube.com/embed/7SJdSDOuVr0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen /> */}

@@ -12,9 +12,6 @@ class CreatePlaylist extends React.Component {
     super(props)
     this.state={
         inputPlayListName:"",
-        inputSongName: "",
-        inputSongArtist: "",
-        inputSongUrl: ""
     }
   }
 
@@ -27,16 +24,6 @@ componentDidUpdate(){
 onChangeInputPlayListName =(event)=>{
     this.setState({inputPlayListName: event.target.value});
 }
-onChangeInputSongName =(event)=>{
-    this.setState({inputSongName: event.target.value});
-}
-onChangeInputSongArtist =(event)=>{
-    this.setState({inputSongArtist: event.target.value});
-}
-onChangeInputSongUrl =(event)=>{
-    this.setState({inputSongUrl: event.target.value});
-}
-
 
 createPlayList = () =>{
     const body ={
@@ -52,22 +39,6 @@ createPlayList = () =>{
 
 }
 
-addSong=(playlistId)=>{
-    const body ={
-        name: this.state.inputSongName,
-        artist: this.state.inputSongArtist,
-        url: this.state.inputSongUrl
-    };
-
-    axios.post(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${playlistId}/songs`,body,{
-        headers:{"auth": "ricardo-hamilton"}
-    }).then(response =>{
-        alert("musica adicionada com sucesso");
-    }).catch((error)=>{
-        alert("deu bosta")
-    })
-}
-
 
 render(){
   return (
@@ -78,15 +49,6 @@ render(){
         <button onClick={this.createPlayList}>cria lista</button>
 
         <br/><br/>
-        <div>
-            <label>Name: </label>
-            <input onChange={this.onChangeInputSongName}/><br/>
-            <label>Artist: </label>
-            <input onChange={this.onChangeInputSongArtist}/><br/>
-            <label>Song url: </label>
-            <input onChange={this.onChangeInputSongUrl}/><br/>
-            <button onClick={()=>this.addSong("778d2496-877d-4a66-8a51-f23540802a45")}>Add song</button>
-        </div>
 
     </ContainerCreate>
   );
