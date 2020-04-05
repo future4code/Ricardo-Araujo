@@ -15,11 +15,6 @@ class CreatePlaylist extends React.Component {
     }
   }
 
-componentDidMount(){
-}
-componentDidUpdate(){
-}
-
 
 onChangeInputPlayListName =(event)=>{
     this.setState({inputPlayListName: event.target.value});
@@ -30,21 +25,24 @@ createPlayList = () =>{
         name: this.state.inputPlayListName
     };
     axios.post("https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists", body,{
-        headers:{"auth" : "ricardo-hamilton"}
+        headers:{"auth" : this.props.user}
     }).then(response =>{
-        alert("deu certo para criar a lista")
+        alert("Playlist criada com sucesso!");
+        this.setState({inputPlayListName: ""})
     }).catch(error=>{
-        alert("não deu certo para criar a lista")
+        alert("não foi possível criar a playlist");
     })
-
 }
 
 
 render(){
   return (
     <ContainerCreate>
+
+        <h2>Create a playlist</h2>
+
         <label>Playlist name </label>
-        <input onChange={this.onChangeInputPlayListName}/>
+        <input onChange={this.onChangeInputPlayListName} value={this.state.inputPlayListName}/>
 
         <button onClick={this.createPlayList}>cria lista</button>
 

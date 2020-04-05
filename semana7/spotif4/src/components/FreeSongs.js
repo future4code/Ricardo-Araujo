@@ -15,10 +15,9 @@ class FreeSongs extends React.Component {
 
 
 getFreeSongs = ()=>{
-
   let arrayFreeSongs = []
 
-    for(let i=1;i<101;i++){
+    for(let i=1;i<99;i++){
       const newSong = [...arrayFreeSongs, `http://spoti4.future4.com.br/${i}.mp3`];
       arrayFreeSongs = newSong;
     }
@@ -32,8 +31,6 @@ getFreeSongs = ()=>{
   })
   return renderSongs
 }
-
-
 
 
 render(){

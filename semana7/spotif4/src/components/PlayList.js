@@ -7,38 +7,94 @@ import ReactPlayer from 'react-player';
 const ContainerPlayList = styled.div`
 `
 
+const Header = styled.div`
+    display:grid;
+    grid-template-columns: 4fr 1fr;
+`
+
+const Balls = styled.div`
+    width: 2.6em;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+div {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background-color: #fc2f70;
+}
+div:nth-of-type(1) {
+  transform: translateX(-100%);
+  animation: left-swing 0.5s ease-in alternate infinite;
+}
+
+div:nth-of-type(3) {
+  transform: translateX(-95%);
+  animation: right-swing 0.5s ease-out alternate infinite;
+}
+
+@keyframes left-swing {
+  50%,
+  100% {
+    transform: translateX(95%);
+  }
+}
+
+@keyframes right-swing {
+  50% {
+    transform: translateX(-95%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+`
+
+const SongDiv = styled.div`
+`
+
+
 class PlayList extends React.Component {
   constructor(props){
     super(props)
     this.state={
+      musicsOfPlayList:"",
       inputSongName: "",
       inputSongArtist: "",
       inputSongUrl: ""
     }
   }
 
-onChangeInputSongName =(event)=>{
-    this.setState({inputSongName: event.target.value});
+componentDidMount(){
+  {this.getPlayListSongs()};
 }
-onChangeInputSongArtist =(event)=>{
-    this.setState({inputSongArtist: event.target.value});
+
+
+getPlayListSongs=()=>{
+  axios.get(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${this.props.playListId}/songs`,{
+      headers:{"auth": this.props.user}
+  }).then((response)=>{
+      this.setState({musicsOfPlayList: response.data.result.musics})
+  }).catch((error)=>{
+      alert("Error on acess play list info");
+  })
 }
-onChangeInputSongUrl =(event)=>{
-    this.setState({inputSongUrl: event.target.value});
-}
+
 
 renderAllSongs=()=>{
-//aqui tem um erro conceitual que eu não tive tempo de corrigir, a props passa a lista de musicas
-//sendo que o correto seria passar o id da playlist e eu fazer a get no servidor aquim assim eu poderia
-//atualizar a lista ao adicionar musicas ou remover musicas
-
-    if(this.props.musicsOfPlayList[0] !== undefined){
-        const allSongs = this.props.musicsOfPlayList.map((song,index)=>{
-            return (<div key={index}>
-                        <span>{song.name}</span>
-                        <span onClick={()=>this.deleteSong(song.id)}> x</span>
+    if(this.state.musicsOfPlayList[0] !== undefined){
+        const allSongs = this.state.musicsOfPlayList.map((song,index)=>{
+            return (<SongDiv key={index}>
+                        <div>
+                        <p>Music: {song.name}</p>
+                        <p>Artist: {song.artist}</p>
+                        <span onClick={()=>this.deleteSong(song.id)}>remove song</span>
+                        </div>
                         <ReactPlayer height="200px" width="90%" url={song.url} controls={true}/>
-                    </div>)
+                    </SongDiv>)
         })
         return allSongs;
     }else{
@@ -47,48 +103,38 @@ renderAllSongs=()=>{
 }
 
 deleteSong=(songId)=>{
+  if(window.confirm('Deseja remover esta musica da sua playlist ?')){
     axios.delete(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${this.props.playListId}/songs/${songId}`,{
-        headers:{"auth": "ricardo-hamilton"}
+        headers:{"auth": this.props.user}
     }).then(response=>{
-        alert("Musica deletada com sucesso");
-        {this.GetAllPlayList()}
+        alert("Musica removida com sucesso");
+        {this.getPlayListSongs()};
     }).catch(error=>{
-        alert("não foi possível apagar a música");
+        alert("não foi possível remover a música");
     })
+  }
 }
 
-addSong=()=>{
-  const body ={
-      name: this.state.inputSongName,
-      artist: this.state.inputSongArtist,
-      url: this.state.inputSongUrl
-  };
 
-  axios.post(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${this.props.playListId}/songs`,body,{
-      headers:{"auth": "ricardo-hamilton"}
-  }).then(response =>{
-    {this.renderAllSongs()};
-    alert("musica adicionada com sucesso");
-  }).catch((error)=>{
-      alert("deu bosta")
-  })
+playListSettings=()=>{
+    this.props.setScreen("addsongs");
 }
+
 
 render(){
   return (
     <ContainerPlayList>
-        <h2>{this.props.playListName}</h2> 
-        {this.renderAllSongs()}
 
-        <div>
-            <label>Name: </label>
-            <input onChange={this.onChangeInputSongName}/><br/>
-            <label>Artist: </label>
-            <input onChange={this.onChangeInputSongArtist}/><br/>
-            <label>Song url: </label>
-            <input onChange={this.onChangeInputSongUrl}/><br/>
-            <button onClick={this.addSong}>Add song</button>
-        </div>
+        <Header>
+                <h2>{this.props.playListName}</h2>
+            <Balls onClick={this.playListSettings}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </Balls>
+        </Header>
+
+        {this.renderAllSongs()}
 
     </ContainerPlayList>
   );

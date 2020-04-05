@@ -3,13 +3,78 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const ContainerHome = styled.div`
+
+`
+
+const Header = styled.div`
+    margin-left:24px;
+`
+
+
+const DivPlaylist = styled.div`
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
 `
 
 const EachPlaylist = styled.div`
-    border: 1px solid black;
-    :hover{
-        background-color:purple;
+    display:flex;
+    flex-wrap:wrap;
+    margin:10px;
+    height:180px;
+    width: 40%;
+    border: 1px solid white;
+    img{
+        width: 100%;
+        height: 75%;
+        margin:0;
+        padding:0;
     }
+`
+const DetailsPlayList = styled.div`
+    background-color: black;
+    height: 25%;
+    width:100%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    outline: none;
+    border: none;
+
+    :before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 22%, rgba(138,2,33,1) 33%, rgba(120,1,28,1) 74%, rgba(109,0,25,1) 100%);
+    transform-origin: center left;
+    transform: scaleX(0);
+    transition: transform 0.25s ease-in-out;
+    }
+
+    :hover {
+    cursor: pointer;
+    font-weight: bold;
+    }
+
+    :hover::before {
+    transform-origin: center right;
+    transform: scaleX(1);
+    }
+
+    
+`
+const TextDiv = styled.div`
+    padding:5px;
 `
 
 
@@ -24,69 +89,51 @@ class Home extends React.Component {
 componentDidMount(){
     {this.GetAllPlayList()}
 }
-componentDidUpdate(){
 
-}
 
 GetAllPlayList = () =>{
     axios.get("https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists", {
-        headers: { "auth": "ricardo-hamilton"}
+        headers: { "auth": this.props.user}
     }).then(response =>{
        this.setState({allPlayList: response.data.result.list});
     }).catch(error=>{
-        alert("não deu bom")
+        alert("Erro ao buscar as playlist no servidor")
     })
 }
 
 renderPlaylist = () =>{
+    let imageNumber = 150;
     const list = this.state.allPlayList.map((song)=>{
-        return <EachPlaylist key={song.id} onDoubleClick={()=>this.playListInfo(song.id, song.name)}>
-                    <img src={require("../images/Unknown.jpg")} alt={"bob"} />
-                    <div>
-                        <span>{song.name}</span> 
-                        <span onClick={()=>this.deletePlaylist(song.id)}>X</span>
-                    </div>
+        imageNumber = imageNumber+1;
+        return <EachPlaylist key={song.id} onClick={()=>this.playListInfo(song.id, song.name)}>
+                        <img src={`https://picsum.photos/200/${imageNumber}`} alt={"random internet image"} />
+                    <DetailsPlayList>
+                        <TextDiv>
+                            {song.name}
+                        </TextDiv>
+                    </DetailsPlayList>
                 </EachPlaylist>
     })
     return list;
 }
 
-deletePlaylist=(id)=>{
-    axios.delete(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${id}`,{
-        headers:{"auth": "ricardo-hamilton"}
-    }).then(response=>{
-        alert("deletei a playlist")
-        {this.GetAllPlayList()}
-    }).catch(error=>{
-        alert("não foi possível apagar a playlist")
-    })
-}
 
-
-//isto deveria estar no Playlist.js
 playListInfo=(idOfPlayList, nameOfPlaylist)=>{
-    // axios.get(`https://us-central1-future-apis.cloudfunctions.net/spotifour/playlists/${idOfPlayList}/songs`,{
-    //     headers:{"auth": "ricardo-hamilton"}
-    // }).then((response)=>{
-    //     this.props.choosePlaylist(response.data.result.musics, nameOfPlaylist, idOfPlayList);
-    //     this.props.setScreen("playlist");
-           
-    // }).catch((error)=>{
-    //     alert("Error on acess play list info");
-    // })
-
-    {this.props.choosePlaylist(nameOfPlaylist, idOfPlayList)};
-
+    this.props.choosePlaylist(nameOfPlaylist, idOfPlayList);
+    this.props.setScreen("playlist");
 }
-
-
-
 
 render(){
   return (
     <ContainerHome>
-      { (this.state.allPlayList) && this.renderPlaylist() }
-      
+        <Header>
+            <h2>Playlists</h2>
+        </Header>
+
+       <DivPlaylist>
+        { (this.state.allPlayList) && this.renderPlaylist() }
+       </DivPlaylist>
+
     </ContainerHome>
   );
 }
