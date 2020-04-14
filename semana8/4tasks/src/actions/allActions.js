@@ -1,9 +1,10 @@
-export function createTask(text, id){
+export function createTask(text){
     return{
         type: 'CREATE_TASK',
         payload: {
             text: text,
-            id: id
+            id: Date.now(),
+            complete: false
         }
     }
 }

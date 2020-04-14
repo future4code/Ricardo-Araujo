@@ -26,23 +26,36 @@ const MainContainer = styled(Paper)`
 `
 
 
-function App() {
-  return (
-    <ContainerApp>
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
 
-      <TitleDiv>
-        <h1>4Task</h1>
-      </TitleDiv>
+    }
+  }
 
-      <MainContainer elevation={10}>
-        <InputBox/>
-        <Display/>
-        <FilterBox/>
-      </MainContainer>
 
-    </ContainerApp>
-  );
+  render(){
+    console.log(this.props.abobora);
+    return (
+      <ContainerApp>
+  
+        <TitleDiv>
+          <h1>4Task</h1>
+        </TitleDiv>
+  
+        <MainContainer elevation={5}>
+          <InputBox/>
+          <Display/>
+          <FilterBox/>
+        </MainContainer>
+  
+      </ContainerApp>
+    );
+  }
 }
+
+
 
 export default App;
 

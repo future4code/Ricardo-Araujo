@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { connect } from "react-redux";
+
 const ContainerDisplay = styled.div`
 `
 const DivTaks = styled.div`
@@ -11,15 +13,39 @@ const DivTaks = styled.div`
 `
 
 
-function Display() {
-  return (
-    <ContainerDisplay>
-        <DivTaks>
-            <p>Use Redux</p>
-            <CloseIcon/>
-        </DivTaks>
-    </ContainerDisplay>
-  );
+class Display extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+    }
+  }
+
+renderAllTasks=()=>{
+  const allTasks = this.props.taskList.map((task, index)=>{
+    return (
+      <DivTaks key={index}>
+        <p>{task.text}</p>
+        <CloseIcon/>
+      </DivTaks>
+    )
+  })
+  return allTasks;
 }
 
-export default Display;
+render(){
+  return (
+      <ContainerDisplay>
+          {this.renderAllTasks()}
+      </ContainerDisplay>
+    );
+  }
+}
+
+
+const mapStateToProps = (state) =>{
+  return{
+    taskList: state.task.taskList
+  }
+}
+
+export default connect(mapStateToProps, null)(Display);
