@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import { connect } from "react-redux";
-import { deleteTask, taskDone } from "../actions/allActions"
+import { deleteTask, taskDone, fetchTasks } from "../actions/allActions"
 
 const ContainerDisplay = styled.div`
 `
@@ -18,13 +18,12 @@ const Task = styled.p`
   text-decoration: ${props => props.complete ? 'line-through' : 'none'};
 `
 
-class Display extends React.Component {
-  constructor(props){
-    super(props)
-    this.state={
-    }
-  }
 
+class Display extends React.Component {
+
+componentDidMount(){
+  this.props.fetchTasks()
+}
 
 showFilter = ()=>{
   switch(this.props.filter){
@@ -33,13 +32,13 @@ showFilter = ()=>{
 
     case "pending":
       const pendingTaskList = this.props.taskList.filter((task)=>{
-        return (task.complete===false);
+        return (task.done===false);
       })
       return this.renderAllTasks(pendingTaskList);
 
     case "completed":
       const completedTaskList = this.props.taskList.filter((task)=>{
-        return (task.complete===true);
+        return (task.done===true);
       })
       return this.renderAllTasks(completedTaskList);
 
@@ -52,22 +51,20 @@ renderAllTasks=(array)=>{
   const allTasks = array.map((task, index)=>{
     return (
       <DivTaks key={index}>
-        <Checkbox checked={task.complete} onChange={()=>this.props.taskDone(task.id)}/>
-        <Task complete={task.complete}>{task.text}</Task>
-        <CloseIcon onClick={()=>this.deleteTask(task.id)}/>
+        <Checkbox checked={task.done} onChange={()=>this.props.taskDone(task.id)}/>
+        <Task complete={task.done}>{task.text}</Task>
+        <CloseIcon onClick={()=>this.props.deleteTask(task.id)}/>
       </DivTaks>
     )
   })
   return allTasks;
 }
 
-deleteTask=(id)=>{
-  this.props.deleteTask(id)
-}
 
 
 
 render(){
+
   return (
       <ContainerDisplay>
           {this.showFilter()}
@@ -87,7 +84,8 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = dispatch =>{
   return { 
     deleteTask: id => dispatch(deleteTask(id)),
-    taskDone: id => dispatch(taskDone(id))
+    taskDone: id => dispatch(taskDone(id)),
+    fetchTasks: ()=> dispatch(fetchTasks())
   }
 }
 
