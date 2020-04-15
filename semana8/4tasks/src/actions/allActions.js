@@ -29,16 +29,7 @@ export function taskDone(id){
 
 export function completeAll(){
     return{
-        type: 'COMPLETE_ALL',
-    }
-}
-
-export function filter(state){
-    return{
-        type: 'FILTER',
-        payload:{
-            state: state
-        }
+        type: 'COMPLETE_ALL', 
     }
 }
 
@@ -47,3 +38,13 @@ export function deleteAllComplete(){
         type: 'DELETE_ALL_COMPLETE',
     }
 }
+
+export function setfilter(state){
+    return{
+        type: 'SET-FILTER',
+        payload:{
+            filterValue: state
+        }
+    }
+}
+
