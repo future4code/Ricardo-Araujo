@@ -9,7 +9,7 @@ import {swipeLeft, swipeRight} from '../../components/UserSwipeCard/styled'
 import {updateCurrentPage} from '../../actions/route'
 import {Loader} from '../../components/Loader'
 
-import {getProfileToSwipe} from '../../actions/profiles'
+import {getProfileToSwipe, chooseProfile} from '../../actions/profiles'
 
 export class SwipeScreen extends Component {
 	constructor(props) {
@@ -58,8 +58,6 @@ export class SwipeScreen extends Component {
 					/>}
 				/>
 				<ContentWrapper>
-{/* ainda não sei que a linha abaixo faz (agora acho que sei, ela mostra o load caso não
-	tenha profile para mostrar) */}
 					{currentAnimation !== null && (<Loader/>)}
 
 
@@ -72,6 +70,7 @@ export class SwipeScreen extends Component {
 						<OptionButton onClick={this.onChooseOption('like')} option="like">♥️</OptionButton>
 					</ButtonsWrapper>
 				</ContentWrapper>
+
 			</SwipeScreenWrapper>
 		)
 	}
@@ -84,13 +83,17 @@ SwipeScreen.propTypes = {
 	profileToSwipe: PropTypes.object,
 }
 
-const mapStateToProps = (state) => ({
-})
+const mapStateToProps = (state) => {
+	return {
+		profileToSwipe: state.profiles.profileToSwipe
+	}
+}
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		goToMatchScreen: () => dispatch(updateCurrentPage('MatchScreen')),
-		getProfileToSwipe: ()=>dispatch(getProfileToSwipe())
+		getProfileToSwipe: ()=>dispatch(getProfileToSwipe()),
+		chooseProfile: (id, choise )=>dispatch(chooseProfile(id, choise))
 	}
 }
 

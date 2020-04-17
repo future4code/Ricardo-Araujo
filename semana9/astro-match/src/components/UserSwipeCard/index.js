@@ -20,7 +20,7 @@ class UserSwipeCard extends Component {
 
 
   render() {
-    const { userToSwipe, animationDirection: animation } = this.props
+    const { userToSwipe, animationDirection: animation } = this.props 
 
     return (
       <UserCardWrapper animation={animation}>
@@ -31,6 +31,9 @@ class UserSwipeCard extends Component {
             <UserName>{userToSwipe.name},</UserName>
             <UserAge>{userToSwipe.age}</UserAge>
           </TitleWrapper>
+          
+{/* Preciso pensar em uma forma de melhorar esta div */}
+          <div>{userToSwipe.bio}</div>
         </InfoWrapper>
       </UserCardWrapper>)
   }
