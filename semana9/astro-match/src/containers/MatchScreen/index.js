@@ -40,7 +40,8 @@ class MatchScreen extends Component {
 							<Avatar src={match.photo}/>
 							<ListText>{match.name}</ListText>
 						</ListItem>
-					)): <p>Infelizmente você ainda não tem nenhum match, continue tentando e investindo no seu amor</p>}
+					)): <p>Infelizmente você ainda não tem nenhum match, 
+						continue tentando e investindo no seu amor!</p>}
 				</List>
 			</div>
 		)
