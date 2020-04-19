@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 import Icon from '@mdi/react'
 
+export const ContentWrapper = styled.div`
+  display:flex;
+  flex-direction:column;
+  overflow-y:scroll;
+  height:550px;
+`
+
 export const MatchIcon = styled(Icon)`
 	display: block;
 	fill: #4AA397;

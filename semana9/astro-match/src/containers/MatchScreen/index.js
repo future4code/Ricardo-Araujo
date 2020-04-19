@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {AppBar} from '../../components/AppBar'
 import {mdiAccountSwitch} from '@mdi/js'
 import {updateCurrentPage} from '../../actions/route'
-import {Avatar, List, ListItem, ListText, MatchIcon} from './styled'
+import {Avatar, List, ListItem, ListText, MatchIcon, ContentWrapper} from './styled'
 
 import {getMatches, infoProfile} from '../../actions/profiles'
 
@@ -34,15 +34,17 @@ class MatchScreen extends Component {
 						onClick={goToSwipeScreen}
 					/>}
 				/>
-				<List>
-					{matches[0] ? matches.map((match) => (
-						<ListItem key={match.name} onClick={()=>this.choosedProfile(match.name)}>
-							<Avatar src={match.photo}/>
-							<ListText>{match.name}</ListText>
-						</ListItem>
-					)): <p>Infelizmente você ainda não tem nenhum match, 
-						continue tentando e investindo no seu amor!</p>}
-				</List>
+				<ContentWrapper>
+					<List>
+						{matches[0] ? matches.map((match) => (
+							<ListItem key={match.name} onClick={()=>this.choosedProfile(match.name)}>
+								<Avatar src={match.photo}/>
+								<ListText>{match.name}</ListText>
+							</ListItem>
+						)): <p>Infelizmente você ainda não tem nenhum match, 
+							continue tentando e investindo no seu amor!</p>}
+					</List>
+				</ContentWrapper>
 			</div>
 		)
 	}
