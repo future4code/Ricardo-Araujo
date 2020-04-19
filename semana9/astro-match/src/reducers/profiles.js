@@ -1,7 +1,8 @@
 const initialState = {
   profileToSwipe: {},
   matches:[],
-  numberOfmatches: 0
+  numberOfmatches: 0,
+  choosedProfile: "undefined"
 }
 
 const profiles = (state = initialState, action) => {
@@ -11,6 +12,9 @@ const profiles = (state = initialState, action) => {
       }
       case "SET_MATCHES":{
         return {...state, matches: action.payload.matches, numberOfmatches: action.payload.matches.length}
+      }
+      case "INFO_PROFILE":{
+        return {...state, choosedProfile: action.payload.choosedProfile}
       }
       default:
         return state 

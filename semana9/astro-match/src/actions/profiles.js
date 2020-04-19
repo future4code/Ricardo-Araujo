@@ -18,6 +18,14 @@ export function setMatches (matchesFromAPI){
 	}
 }
 
+export function infoProfile (nameOfProfile){
+	return{
+		type:'INFO_PROFILE',
+		payload:{
+			choosedProfile: nameOfProfile
+		}
+	}
+}
 
 
 
