@@ -9,7 +9,10 @@ import {swipeLeft, swipeRight} from '../../components/UserSwipeCard/styled'
 import {updateCurrentPage} from '../../actions/route'
 import {Loader} from '../../components/Loader'
 
-import {getProfileToSwipe, chooseProfile} from '../../actions/profiles'
+import {getProfileToSwipe, chooseProfile, getMatches} from '../../actions/profiles'
+
+import Badge from '@material-ui/core/Badge';
+
 
 export class SwipeScreen extends Component {
 	constructor(props) {
@@ -21,6 +24,10 @@ export class SwipeScreen extends Component {
 
 	componentDidMount() {
 		this.props.getProfileToSwipe()
+
+		this.props.getMatches();
+
+
 		if (!this.props.profileToSwipe && this.props.getProfileToSwipe) {
 			this.props.getProfileToSwipe()
 		}
@@ -41,21 +48,29 @@ export class SwipeScreen extends Component {
 
 		if (this.props.profileToSwipe) {
 			this.props.chooseProfile(this.props.profileToSwipe.id, option === 'like')
+
+			this.props.getMatches();
 		}
 	}
 
+
 	render() {
-		const {profileToSwipe, goToMatchScreen} = this.props
+		const {profileToSwipe, goToMatchScreen, numberOfmatches} = this.props
 		const {currentAnimation} = this.state
 
 		return (
 			<SwipeScreenWrapper>
 				<AppBar
-					rightAction={<MatchIcon
-						size={1.5}
-						path={mdiAccountMultipleCheck}
-						onClick={goToMatchScreen}
-					/>}
+					rightAction={
+						<Badge badgeContent={numberOfmatches} 
+								color="secondary" overlap="circle">
+							<MatchIcon
+								size={1.5}
+								path={mdiAccountMultipleCheck}
+								onClick={goToMatchScreen}
+							/>
+						</Badge>
+					}
 				/>
 				<ContentWrapper>
 					{currentAnimation !== null && (<Loader/>)}
@@ -85,7 +100,8 @@ SwipeScreen.propTypes = {
 
 const mapStateToProps = (state) => {
 	return {
-		profileToSwipe: state.profiles.profileToSwipe
+		profileToSwipe: state.profiles.profileToSwipe,
+		numberOfmatches: state.profiles.numberOfmatches
 	}
 }
 
@@ -93,7 +109,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		goToMatchScreen: () => dispatch(updateCurrentPage('MatchScreen')),
 		getProfileToSwipe: ()=>dispatch(getProfileToSwipe()),
-		chooseProfile: (id, choise )=>dispatch(chooseProfile(id, choise))
+		chooseProfile: (id, choise )=>dispatch(chooseProfile(id, choise)),
+		getMatches: ()=> dispatch(getMatches())
 	}
 }
 

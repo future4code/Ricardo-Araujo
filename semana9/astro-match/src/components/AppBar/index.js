@@ -3,6 +3,8 @@ import React from 'react'
 import logoImage from '../../img/logo.png'
 import { ActionWrapper, AppBarWrapper, Logo } from './styled'
 
+
+
 export const AppBar = (props) => {
   return (
     <AppBarWrapper>
