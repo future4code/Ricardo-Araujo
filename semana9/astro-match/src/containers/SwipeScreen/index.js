@@ -12,6 +12,7 @@ import {Loader} from '../../components/Loader'
 import {getProfileToSwipe, chooseProfile, getMatches} from '../../actions/profiles'
 
 import Badge from '@material-ui/core/Badge';
+import SnackbarNewMatch from '../SnackbarNewMatch'
 
 
 export class SwipeScreen extends Component {
@@ -77,6 +78,8 @@ export class SwipeScreen extends Component {
 					{profileToSwipe ? <UserSwipeCard userToSwipe={profileToSwipe}
 										             animationDirection={currentAnimation}/> 
 									: (<Loader/>)}
+
+					<SnackbarNewMatch/>
 
 					<ButtonsWrapper>
 						<OptionButton onClick={this.onChooseOption('dislike')} option="dislike">X</OptionButton>

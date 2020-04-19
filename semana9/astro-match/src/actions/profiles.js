@@ -27,6 +27,14 @@ export function infoProfile (nameOfProfile){
 	}
 }
 
+export function closeSnackbar (){
+	return{
+		type: 'CLOSE_SNACKBAR',
+		payload:{
+			
+		}
+	}
+}
 
 
 export const clearSwipes = () => async (dispatch) => {

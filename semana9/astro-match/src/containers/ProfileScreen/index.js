@@ -15,7 +15,7 @@ class ProfileScreen extends React.Component {
   constructor(props) {
 		super(props)
 		this.state = {
-			profileInfo: [{}],
+      profileInfo: [{}],
 		}
 	}
 
@@ -27,7 +27,7 @@ class ProfileScreen extends React.Component {
     const newProfileInfo = this.props.matches.filter((profile)=>{
       return (profile.name === this.props.choosedProfile)
     })
-    
+
     this.setState({profileInfo: newProfileInfo})
   }
 
@@ -65,6 +65,7 @@ class ProfileScreen extends React.Component {
           <p>Envie uma mensagem: </p>
           <ChatIcon color="secondary" size="large"/>
         </MenssageWrapper>
+
       </div>
     )
   }
@@ -78,7 +79,7 @@ ProfileScreen.propTypes = {
 const mapStateToProps = (state) => ({
   numberOfmatches: state.profiles.numberOfmatches,
   choosedProfile: state.profiles.choosedProfile,
-  matches: state.profiles.matches
+  matches: state.profiles.matches,
 })
 
 const mapDispatchToProps = (dispatch) => ({
