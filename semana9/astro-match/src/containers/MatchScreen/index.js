@@ -15,7 +15,6 @@ class MatchScreen extends Component {
 		}
 	}
 
-	//mudar nome 
 	choosedProfile=(name)=>{
 		this.props.infoProfile(name)
 		this.props.goToProfileScreen()
