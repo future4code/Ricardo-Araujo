@@ -8,12 +8,12 @@ class HomeAdm extends React.Component {
 
 
 render(){
-    const { goTologinScreen, goToCreateTrips, goToTripList } = this.props
+    const { goTologinScreen, goToCreateTrip, goToTripList } = this.props
     return(
         <div>
             <h1>Home ADM</h1>
             <button onClick={goTologinScreen}>volta para a tela de login</button>
-            <button onClick={goToCreateTrips}>Criar uma viagem</button>
+            <button onClick={goToCreateTrip}>Criar uma viagem</button>
             <button onClick={goToTripList}>Ver todas as viagens</button>
         </div>
     )
@@ -24,8 +24,7 @@ render(){
 const mapDispatchToProps = dispatch =>{
     return{
         goTologinScreen: () => dispatch(push(routes.root)),
-        goToHomeAdm: () => dispatch(push(routes.HomeAdm)),
-        goToCreateTrips: () => dispatch(push(routes.createTrips)),
+        goToCreateTrip: () => dispatch(push(routes.createTrip)),
         goToTripList: () => dispatch(push(routes.tripList))
     }
   }

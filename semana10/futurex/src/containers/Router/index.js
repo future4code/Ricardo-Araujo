@@ -12,8 +12,8 @@ export const routes = {
   root: "/",
   allTrips: "/allTrips",
   homeAdm: "/home",
-  createTrips: "/create-trip",
-  tripList: "/trip-list",
+  createTrip: "/home/create-trip",
+  tripList: "/home/trip-list",
 };
 
 export function Router(props) {
@@ -24,7 +24,6 @@ export function Router(props) {
         <Route exact path={routes.allTrips} component={AllTrips} />
         <Route exact path={routes.homeAdm} component={HomeAdm} />
         <Route exact path={routes.createTrip} component={CreateTrip} />
-
         <Route exact path={routes.tripList} component={TripList} />
       </Switch>
     </ConnectedRouter>

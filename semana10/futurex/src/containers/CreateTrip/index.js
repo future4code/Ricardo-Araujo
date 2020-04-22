@@ -6,9 +6,9 @@ import { routes } from "../Router"
 class CreateTrip extends React.Component {
 
 
-
 render(){
     const { goToHome } = this.props
+    
     return(
         <div>
             <h1>Create Trips</h1>
