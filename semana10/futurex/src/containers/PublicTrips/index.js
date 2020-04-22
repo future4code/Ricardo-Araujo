@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router"
 
-class AllTrips extends React.Component {
+class PublicTrips extends React.Component {
 
 
 
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch =>{
   }
 
 
-export default connect (null, mapDispatchToProps) (AllTrips);
+export default connect (null, mapDispatchToProps) (PublicTrips);

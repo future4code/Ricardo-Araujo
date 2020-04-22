@@ -61,7 +61,7 @@ class LoginPage extends Component {
 const mapDispatchToProps = dispatch =>{
   return{
       goToHomeAdm: () => dispatch(push(routes.homeAdm)),
-      goToAllTrips: () => dispatch(push(routes.allTrips))
+      goToAllTrips: () => dispatch(push(routes.publicTrips))
   }
 }
 
