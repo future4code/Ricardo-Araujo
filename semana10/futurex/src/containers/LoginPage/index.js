@@ -6,6 +6,7 @@ import { routes } from "../Router"
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
+import {login} from "../../actions/login";
 
 const LoginWrapper = styled.form`
   width: 100%;
@@ -31,9 +32,13 @@ class LoginPage extends Component {
     });
   };
 
+  logout = () =>{
+    localStorage.clear()
+  }
+
   render() {
     const { email, password } = this.state;
-    const { goToHomeAdm, goToAllTrips } = this.props
+    const { goToHomeAdm, goToAllTrips, login } = this.props
 
     return (
       <LoginWrapper>
@@ -51,8 +56,9 @@ class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button onClick={goToHomeAdm}>Login</Button>
+        <Button onClick={()=>login(email, password)}>Login</Button>
         <Button onClick={goToAllTrips}>Entrar sem login</Button>
+        <Button onClick={this.logout}>logout</Button>
       </LoginWrapper>
     );
   }
@@ -61,7 +67,8 @@ class LoginPage extends Component {
 const mapDispatchToProps = dispatch =>{
   return{
       goToHomeAdm: () => dispatch(push(routes.homeAdm)),
-      goToAllTrips: () => dispatch(push(routes.publicTrips))
+      goToAllTrips: () => dispatch(push(routes.publicTrips)),
+      login: (email, password) => dispatch(login(email, password))
   }
 }
 
