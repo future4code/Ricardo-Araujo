@@ -1,11 +1,21 @@
 import axios from "axios"
 
-export const fetchTrips = () => async (dispath) =>{
+export function getTrips(tripsFromAPI){
+    return{
+        type: 'GET_TRIPS',
+        payload:{
+            trips: tripsFromAPI
+        }
+    } 
+}
+
+
+export const fetchTrips = () => async (dispatch) =>{
     const response = await axios.get(
         `https://us-central1-missao-newton.cloudfunctions.net/futureX/ricardo-hamilton/trips`
     );
-
-    console.log(response.data.trips)
+    
+    dispatch(getTrips(response.data.trips))
 }
 
 export const createTrips = (body, token) => async (dispath) =>{

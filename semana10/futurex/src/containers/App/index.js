@@ -9,6 +9,9 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { generateReducers } from "../../reducers";
 import { routerMiddleware } from "connected-react-router";
 
+import Header from "../Header"
+import {ContentWrapper} from "./style"
+
 export const history = createBrowserHistory();
 
 const middlewares = [
@@ -24,7 +27,12 @@ export const App = () => (
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <Router history={history} />
+
+      <ContentWrapper>
+        <Header/>
+        <Router history={history} />
+      </ContentWrapper>
+
     </MuiThemeProvider>
   </Provider>
 );

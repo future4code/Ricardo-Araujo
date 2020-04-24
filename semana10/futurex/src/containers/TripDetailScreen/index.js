@@ -19,6 +19,7 @@ class TripDetailScreen extends React.Component{
         return(
             <div>
                 <h1>Tela de detalhes</h1>
+                <p>Aqui vou colocar a lista de candidatos + deletar viagem</p>
                 <button onClick={goToHome}>volta para home</button>
             </div>
         )

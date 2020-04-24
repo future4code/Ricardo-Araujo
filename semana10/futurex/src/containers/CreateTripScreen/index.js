@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
+import { push, replace } from "connected-react-router";
 import { routes } from "../Router"
 import { createTrips } from "../../actions/trips"
 
@@ -23,7 +23,7 @@ const createTripForm=[
         name: "description",
         type: "text",
         label: "Descrição",
-        pattern: "[A-Za-z ãéÁáêõÕÊíÍçÇÚúüÜ]{30,}",
+        pattern: "[A-Za-z ãéÁáêõÕÊíÍçÇÚúüÜ 0123456789]{30,}",
         title: "A descrição deve conter no mínimo 30 caracteres"
     },
     {
@@ -41,7 +41,9 @@ class CreateTripScreen extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            form:{}
+            form:{
+                planet: ""
+            }
         }
     }
 
@@ -66,13 +68,17 @@ class CreateTripScreen extends React.Component {
         this.props.createTrips(this.state.form , token)
     }
 
+    handleSelectPlanet = (event)=>{
+        this.setState({
+            form: {...this.state.form, planet: event.target.value}
+        })
+    }
+
 render(){
-    const { goToHome } = this.props
     
     return(
         <div>
             <h1>Create Trips</h1>
-            <button onClick={goToHome}>volta para home</button>
 
             <form onSubmit={this.handleSubmit}>
                 {createTripForm.map((input)=>(
@@ -91,17 +97,21 @@ render(){
                         />
                     </div>
                 ))}
+                <select onChange={this.handleSelectPlanet}>
+                    <option></option>    
+                    <option>Mercúrio</option>    
+                    <option>Vênus</option>    
+                    <option>Terra</option>    
+                    <option>Marte</option>    
+                    <option>Júpiter</option>    
+                    <option>Saturno</option>    
+                    <option>Urano</option>    
+                    <option>Neturno</option>    
+                    <option>Plutão ??</option>    
+                </select> 
 
                 <button type="submit">Enviar</button>
             </form>
-           
-
-
-
-
-
-
-
 
         </div>
     )
@@ -111,7 +121,7 @@ render(){
 
 const mapDispatchToProps = dispatch =>{
     return{
-        goToHome: () => dispatch(push(routes.homeAdm)),
+        goTologinScreen: () => dispatch(replace(routes.root)),
         createTrips: (body, token) => dispatch(createTrips(body, token))
     }
   }

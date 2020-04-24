@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import {login} from "../../actions/login";
 
+
 const LoginWrapper = styled.form`
   width: 100%;
   height: 100vh;
@@ -26,48 +27,49 @@ class LoginPage extends Component {
     };
   }
 
+  // Falta colocar o redirecionar da loggin
+  // componentDidMount(){
+  //   const token = localStorage.getItem("token");
+
+  //   (token === null && this.props.goTologinScreen())
+  // }
+
   handleFieldChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  logout = () =>{
-    localStorage.clear()
-  }
 
   render() {
     const { email, password } = this.state;
-    const { goToHomeAdm, goToAllTrips, login } = this.props
+    const { goToAllTrips, login } = this.props
 
     return (
-      <LoginWrapper>
-        <TextField
-          onChange={this.handleFieldChange}
-          name="email"
-          type="email"
-          label="E-mail"
-          value={email}
-        />
-        <TextField
-          onChange={this.handleFieldChange}
-          name="password"
-          type="password"
-          label="Password"
-          value={password}
-        />
-        <Button onClick={()=>login(email, password)}>Login</Button>
-        <Button onClick={goToAllTrips}>Entrar sem login</Button>
-        <Button onClick={this.logout}>logout</Button>
-      </LoginWrapper>
+        <LoginWrapper>
+          <TextField
+            onChange={this.handleFieldChange}
+            name="email"
+            type="email"
+            label="E-mail"
+            value={email}
+          />
+          <TextField
+            onChange={this.handleFieldChange}
+            name="password"
+            type="password"
+            label="Password"
+            value={password}
+          />
+          <Button color='primary' onClick={()=>login(email, password)}>Login</Button>
+         
+        </LoginWrapper>
     );
   }
 }
 
 const mapDispatchToProps = dispatch =>{
   return{
-      goToHomeAdm: () => dispatch(push(routes.homeAdm)),
-      goToAllTrips: () => dispatch(push(routes.publicTrips)),
       login: (email, password) => dispatch(login(email, password))
   }
 }
