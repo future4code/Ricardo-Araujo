@@ -33,7 +33,6 @@ export default class TripCard extends React.Component{
 
 
     render(){
-        console.log(this.state.logged)
         return(
             <TripCardWrapper>
                 <Card>

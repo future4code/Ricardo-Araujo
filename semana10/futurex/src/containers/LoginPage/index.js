@@ -27,12 +27,11 @@ class LoginPage extends Component {
     };
   }
 
-  // Falta colocar o redirecionar da loggin
-  // componentDidMount(){
-  //   const token = localStorage.getItem("token");
+  componentDidMount(){
+    const token = localStorage.getItem("token");
 
-  //   (token === null && this.props.goTologinScreen())
-  // }
+    (token !== null && this.props.goToPublicTrips())
+  }
 
   handleFieldChange = event => {
     this.setState({
@@ -43,7 +42,7 @@ class LoginPage extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { goToAllTrips, login } = this.props
+    const { login } = this.props
 
     return (
         <LoginWrapper>
@@ -70,7 +69,8 @@ class LoginPage extends Component {
 
 const mapDispatchToProps = dispatch =>{
   return{
-      login: (email, password) => dispatch(login(email, password))
+      login: (email, password) => dispatch(login(email, password)),
+      goToPublicTrips: () => dispatch(push(routes.publicTrips)),
   }
 }
 

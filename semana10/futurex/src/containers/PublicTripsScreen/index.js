@@ -7,6 +7,7 @@ import {DivGrid} from './style'
 import Typography from '@material-ui/core/Typography';
 import { push } from "connected-react-router";
 import { routes } from "../Router";
+import {setTrip} from "../../actions/trips"
 
 class PublicTripsScreen extends React.Component {
 
@@ -26,12 +27,11 @@ renderTrips=()=>{
                         date={trip.date}
                         duration={trip.duration}
                         handleApplicationToTrip={this.handleApplicationToTrip}
-                        handleDetailsTrip={this.handleDetailsTrip}
+                        handleDetailsTrip={()=>this.handleDetailsTrip(trip.id)}
                     />
                 </div>
         )
     })
-
     return tripCards;
 }
 
@@ -39,12 +39,12 @@ handleApplicationToTrip=()=>{
     console.log("trip application")
 }
 
-handleDetailsTrip=()=>{
+handleDetailsTrip=(tripId)=>{
+    this.props.setTrip(tripId)
     this.props.goToTripDetailScreen()
 }
 
 render(){
-    console.log(this.props.trips)
 
     return(
         <div>
@@ -76,7 +76,8 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = dispatch =>{
     return{
         fetchTrips: () => dispatch(fetchTrips()),
-        goToTripDetailScreen: () => dispatch(push(routes.tripDetailScreen))
+        goToTripDetailScreen: () => dispatch(push(routes.tripDetailScreen)),
+        setTrip: (tripId) => dispatch(setTrip(tripId))
     }
   }
 

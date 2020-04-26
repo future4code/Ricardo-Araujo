@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { push, replace } from "connected-react-router";
+import { replace } from "connected-react-router";
 import { routes } from "../Router"
 import { createTrips } from "../../actions/trips"
 

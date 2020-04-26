@@ -23,7 +23,6 @@ handleMenu=()=>{
         case (true):
             return (
                 <div>
-                    <p>teste logado</p>
                     <Button onClick={this.logout}>logout</Button>            
                     <Button onClick={goToCreateTrip}>Criar uma viagem</Button>
                 </div>
@@ -37,7 +36,8 @@ handleMenu=()=>{
 }
 
 logout = () =>{
-    localStorage.clear()
+    localStorage.clear();
+    this.props.goTologinScreen();
   }
 
     render(){

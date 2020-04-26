@@ -12,9 +12,9 @@ export const login = (email, password) => async (dispatch) =>{
             `https://us-central1-missao-newton.cloudfunctions.net/futureX/ricardo-hamilton/login`,body
     )
         localStorage.setItem("token", response.data.token)
-        dispatch(push(routes.homeAdm))
+        dispatch(push(routes.publicTrips))
 
     } catch(error){
         alert("Erro ao realizar o login, tente outra vez")
     }
-} 
+}
