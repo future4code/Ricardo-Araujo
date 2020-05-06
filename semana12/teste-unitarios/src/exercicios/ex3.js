@@ -1,1 +1,3 @@
-export function sorteiaNumero(min, max) {}
+export function sorteiaNumero(min, max) {
+    
+}
