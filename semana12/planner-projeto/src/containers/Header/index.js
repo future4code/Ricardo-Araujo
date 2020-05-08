@@ -1,7 +1,10 @@
 import React from "react";
 import {HeaderWrapper} from "./style";
+import {week} from "../Planner";
+import { connect } from "react-redux";
+import {createTask} from "../../actions/task"
 
-class Header extends React.Component{
+export class Header extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -20,7 +23,7 @@ class Header extends React.Component{
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        console.log(this.state.taskForm)
+        this.props.createTask(this.state.taskForm);
     }
 
     render(){
@@ -37,21 +40,22 @@ class Header extends React.Component{
                         name={"day"}
                         onChange={this.handleOnChange}>
                             <option></option>
-                            <option value="segunda">Segunda-feira</option>
-                            <option value="terca">Terça-feira</option>
-                            <option value="quarta">Quarta-feira</option>
-                            <option value="quita">Quinta-feira</option>
-                            <option value="sexta">Sexta-feira</option>
-                            <option value="sexta">Teste</option>
+                            {week.map(day=>(
+                                <option value={day}>{day}</option>
+                            ))}
                     </select>
                     <button type="submit">Criar tafera</button>
                 </form>
             </HeaderWrapper>
         )
     }
-
-
-
 }
 
-export default Header;
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        createTask: (body) => dispatch(createTask(body))
+    }
+}
+
+export default connect (null, mapDispatchToProps)(Header);

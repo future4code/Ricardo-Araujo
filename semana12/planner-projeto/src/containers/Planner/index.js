@@ -1,31 +1,52 @@
 import React from "react";
 import { connect } from "react-redux";
-import {PlannerWrapper} from "./style";
+import {PlannerWrapper, GridWrapper, DailyWrapper} from "./style";
 import Header from "../Header";
 import {getTasks} from "../../actions/task";
 
+export const week = ["teste","Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
+
+
 class Planner extends React.Component {
-  constructor(props){
-    super(props)
-    this.state={
 
-    }
-
-  }
 
   componentDidMount(){
     this.props.getTasks();
   }
-
-  
   
 
+  render() { 
+    const{taskList}=this.props
 
-  render() {
+    const newTaskListPerDay = {}
+
+    {taskList[0] && taskList.forEach((task)=>{
+          if(newTaskListPerDay[task.day]){
+            newTaskListPerDay[task.day].push(task);
+          }else{
+            newTaskListPerDay[task.day] = [task];
+          }
+        })
+    }
+
+    console.log(newTaskListPerDay)
+
     return (
       <PlannerWrapper>
         <Header/>
-        <div>BODY</div>
+        <GridWrapper>
+          {week.map((day)=>(
+            <DailyWrapper>
+                <p>{day}</p>
+                <hr/>
+                {newTaskListPerDay[day] && 
+                   newTaskListPerDay[day].map((task)=>(
+                  <p>{task.text}</p>
+                ))}
+                
+            </DailyWrapper>
+          ))}
+        </GridWrapper>
       </PlannerWrapper>
     );
   }
@@ -34,7 +55,7 @@ class Planner extends React.Component {
 
 const mapStateToProps = (state) =>{
   return{
-
+    taskList: state.task.taskList
   }
 }
 
