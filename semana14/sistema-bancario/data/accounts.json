@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Ricardo",
+        "cpf": "201.203.203.47",
+        "birthDate": "32-43-1229",
+        "balance": 2410,
+        "statement": [
+            {
+                "operation": "addMoney",
+                "data": 34
+            },
+            {
+                "operation": "addMoney",
+                "data": 34
+            },
+            {
+                "operation": "transference",
+                "data": 1000
+            }
+        ]
+    },
+    {
+        "name": "Cazuza",
+        "cpf": "000.001.003-23",
+        "birthDate": "12-12-1234",
+        "balance": 1012,
+        "statement": [
+            {
+                "operation": "transference",
+                "data": 1000
+            }
+        ]
+    }
+]
