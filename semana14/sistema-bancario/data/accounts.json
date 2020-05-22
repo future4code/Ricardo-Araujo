@@ -23,12 +23,23 @@
         "name": "Cazuza",
         "cpf": "000.001.003-23",
         "birthDate": "12-12-1234",
-        "balance": 1012,
+        "balance": 1025,
         "statement": [
             {
                 "operation": "transference",
                 "data": 1000
+            },
+            {
+                "operation": "addBalance",
+                "data": 13
             }
         ]
+    },
+    {
+        "name": "Joao",
+        "cpf": "302.029.301-24",
+        "birthDate": "23-12-2012",
+        "balance": 234,
+        "statement": []
     }
 ]

@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
-const accountsFile = require("../data/accounts.json");
+const createAccount_1 = require("./services/createAccount");
+const addBalance_1 = require("./services/addBalance");
+const getBalance_1 = require("./services/getBalance");
+const transference_1 = require("./services/transference");
 const action = process.argv[2];
-const errorMensage = "Não encontramos nenhuma conta correspondente";
 switch (action) {
     case "createAccount":
         {
@@ -14,79 +15,17 @@ switch (action) {
                 "balance": Number(process.argv[6]),
                 "statement": []
             };
-            if (mockAccount.name && mockAccount.cpf && mockAccount.birthDate && mockAccount.balance) {
-                const checkCPF = accountsFile.find((account) => {
-                    return account.cpf === mockAccount.cpf;
-                });
-                if (checkCPF === undefined) {
-                    const neWFile = accountsFile;
-                    neWFile.push(mockAccount);
-                    try {
-                        fs.writeFileSync(`data/accounts.json`, JSON.stringify(neWFile));
-                        console.log('Criado com sucesso');
-                        break;
-                    }
-                    catch (error) {
-                        console.error(error);
-                        break;
-                    }
-                }
-                else {
-                    console.log("Já existe uma conta com este associado cpf!");
-                }
-            }
-            else {
-                console.log("digite um nome, cpf, birthDate, balance");
-                break;
-            }
+            createAccount_1.default(mockAccount);
+            break;
         }
         ;
-    case "balance":
-        {
-            const name = process.argv[3];
-            const cpf = process.argv[4];
-            const findCPF = accountsFile.find((account) => {
-                return account.cpf === cpf;
-            });
-            if (findCPF !== undefined && findCPF.name === name) {
-                console.log(`O seu saldo é ${findCPF.balance}`);
-                break;
-            }
-            else {
-                console.log(errorMensage);
-                break;
-            }
-        }
-        ;
-    case "addMoney":
+    case "addBalance":
         {
             const name = process.argv[3];
             const cpf = process.argv[4];
             const money = Number(process.argv[5]);
-            const findCPF = accountsFile.find((account) => {
-                return account.cpf === cpf;
-            });
-            if (findCPF !== undefined && findCPF.name === name) {
-                const neWFile = accountsFile.map(element => {
-                    if (findCPF === element) {
-                        const newStatement = {
-                            operation: action,
-                            data: money
-                        };
-                        element.balance += money;
-                        element.statement.push(newStatement);
-                        return element;
-                    }
-                    else {
-                        return element;
-                    }
-                });
-                fs.writeFileSync(`data/accounts.json`, JSON.stringify(neWFile));
-                break;
-            }
-            else {
-                console.log(errorMensage);
-            }
+            addBalance_1.default(name, cpf, money);
+            break;
         }
         ;
     case "payBill":
@@ -100,65 +39,12 @@ switch (action) {
             const money = Number(process.argv[5]);
             const nameDestiny = process.argv[6];
             const cpfDestiny = process.argv[7];
-            const findCPFOrigin = accountsFile.find((account) => {
-                return account.cpf === cpfOrigin;
-            });
-            const findCPFDestiny = accountsFile.find((account) => {
-                return account.cpf === cpfDestiny;
-            });
-            console.log(findCPFOrigin);
-            console.log(findCPFDestiny);
-            if (findCPFOrigin !== undefined && findCPFDestiny !== undefined) {
-                if (findCPFOrigin.name === nameOrigin && findCPFDestiny.name === nameDestiny) {
-                    if (findCPFOrigin.balance >= money) {
-                        const neWFile = accountsFile.map(element => {
-                            if (findCPFOrigin === element) {
-                                const newStatement = {
-                                    operation: action,
-                                    data: money
-                                };
-                                element.balance -= money;
-                                element.statement.push(newStatement);
-                                return element;
-                            }
-                            else if (findCPFDestiny === element) {
-                                const newStatement = {
-                                    operation: action,
-                                    data: money
-                                };
-                                element.balance += money;
-                                element.statement.push(newStatement);
-                                return element;
-                            }
-                            else {
-                                return element;
-                            }
-                        });
-                        fs.writeFileSync(`data/accounts.json`, JSON.stringify(neWFile));
-                        console.log("Transferencia realizada com sucesso");
-                        break;
-                    }
-                    else {
-                        console.log("Saldo insuficiente");
-                        break;
-                    }
-                }
-                else {
-                    console.log(errorMensage);
-                    break;
-                }
-            }
-            else {
-                console.log(errorMensage);
-                break;
-            }
+            transference_1.default(nameOrigin, cpfOrigin, money, nameDestiny, cpfDestiny);
+            break;
         }
         ;
     case "getAllAccounts": {
-        const allAccounts = accountsFile.map(element => {
-            return (`${element.name}, ${element.cpf}`);
-        });
-        console.log(allAccounts);
+        getBalance_1.default();
         break;
     }
     default: {
