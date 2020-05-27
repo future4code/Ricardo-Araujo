@@ -30,7 +30,7 @@ export async function sendNotificationPromise (notification: string):Promise<voi
                 })
       
         );
-    }
+    };
     
     await Promise.all(promiseArray);
 };

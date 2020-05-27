@@ -9,3 +9,8 @@ export type bodyNews ={
     content: string,
     date: number
 };
+
+export type user = {
+    name: string,
+    email: string
+}

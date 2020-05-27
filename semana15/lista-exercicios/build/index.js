@@ -9,12 +9,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const exercicio06_1 = require("./exercicios/exercicio06");
+const exercicio07_1 = require("./exercicios/exercicio07");
 console.log("hello world");
+const newNews = {
+    title: "Chikorita",
+    content: "é o melhor pokemon inicial do tipo grama",
+    date: 1589818936000
+};
+const newUser = {
+    name: "Doutor NodeJS",
+    email: "dinokiller@bol.com.br"
+};
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield exercicio06_1.sendNotificationPromise("notificação com Promise.all");
+            exercicio07_1.getAllNotifications();
         }
         catch (error) {
             console.log(error);

@@ -28,6 +28,7 @@ function sendNotificationPromise(notification) {
                 console.log(error);
             }));
         }
+        ;
         yield Promise.all(promiseArray);
     });
 }
