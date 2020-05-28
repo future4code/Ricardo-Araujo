@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Planner Snapshot diagramação da tela 1`] = `
+<div
+  className="sc-bdVaJa gUXOej"
+/>
+`;
+
+exports[`Test Planner Snapshot do grid 1`] = `
+<div
+  className="sc-bwzfXH jcuURf"
+/>
+`;
