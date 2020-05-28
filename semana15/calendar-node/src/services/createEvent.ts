@@ -10,7 +10,7 @@ export function createEvent(newEvent:event):void{
     if(newEvent.name && newEvent.description && newEvent.dateStart && newEvent.dateEnd){
         
         //verifico se a data é valida
-        if(newEvent.dateEnd.toString()!=="Invalid date"){
+        if(newEvent.dateStart.toString()!=="Invalid date" && newEvent.dateEnd.toString()!=="Invalid date"){
             
             const today:moment.Moment = moment();
             const diffDate = newEvent.dateStart.diff(today);
@@ -36,7 +36,7 @@ export function createEvent(newEvent:event):void{
                         return event===aux.dateStart
                     })
     
-    
+                    //verifico se já existe evento nesta data
                     if(newCalendar[0]===undefined){
                         newCalendar.push(aux);
                     
