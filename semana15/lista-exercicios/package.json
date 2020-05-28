@@ -1,0 +1,17 @@
+{
+  "name": "semana15-aula3",
+  "version": "1.0.0",
+  "description": "exercicio tarde",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node build/index.js"
+  },
+  "author": "Ricardo Araujo",
+  "license": "ISC",
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^14.0.5",
+    "axios": "^0.19.2"
+  }
+}
