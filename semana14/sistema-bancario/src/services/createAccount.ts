@@ -1,15 +1,12 @@
-import * as fs from "fs";
 import { account } from "../types";
-import { errorMenssage } from "../menssages";
+import { errorMenssage,sucessMenssage } from "../menssages";
 import {checkUnderage} from "./checkUnderage";
 import {getAccountByCpf} from "./getAccountbyCPF";
-import {writeInTheSystem} from "./writeInTheSystem"
+import {writeInTheSystem} from "./writeInTheSystem";
 
-const accountsFile = require("../../data/accounts.json");
 
 export default function createAccount (mockAccount: account):void{
-
-
+    
     if(!mockAccount.name || !mockAccount.cpf || !mockAccount.birthDate || !mockAccount.balance){
         return console.log(errorMenssage.missingInfoCreateAccount)
     };
@@ -21,13 +18,15 @@ export default function createAccount (mockAccount: account):void{
     };
     
     const checkCpfAlreadyInUse = getAccountByCpf(mockAccount.cpf);
-
+    
     if(checkCpfAlreadyInUse!==undefined){
         return console.log(errorMenssage.CpfAlreadyInUse);
     };
-
+    
+    const accountsFile = require("../../data/accounts.json");
     const newFile = accountsFile;
     newFile.push(mockAccount);
 
     writeInTheSystem(newFile);
+    return console.log(sucessMenssage.createAccount);
 };

@@ -44,9 +44,14 @@
     },
     {
         "name": "Regina",
-        "cpf": "320.234.253-12",
-        "birthDate": "16/10/1993",
-        "balance": null,
-        "statement": []
+        "cpf": "320.234.253-13",
+        "birthDate": "24/12/2000",
+        "balance": 26,
+        "statement": [
+            {
+                "operation": "addBalance",
+                "data": 14
+            }
+        ]
     }
 ]

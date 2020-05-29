@@ -13,7 +13,7 @@ function main() {
                     "name": process.argv[3],
                     "cpf": process.argv[4],
                     "birthDate": process.argv[5],
-                    "balance": Number(process.argv[6]),
+                    "balance": 0,
                     "statement": []
                 };
                 createAccount_1.default(mockAccount);

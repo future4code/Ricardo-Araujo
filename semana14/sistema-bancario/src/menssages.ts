@@ -1,9 +1,12 @@
 export enum errorMenssage{
     underage="O usuario não tem mais de 18 anos",
-    missingInfoCreateAccount="digite um nome, cpf, birthDate, balance",
+    missingInfoCreateAccount="Conta não criada, digite um nome, cpf, birthDate, balance",
     CpfAlreadyInUse="Já existe uma conta com este cpf associado",
+    noAccount="Não encontramos conta correspontende com estes dados"
 };
 
 export enum sucessMenssage{
-    write="Dados gravados com sucesso!"
+    write="Dados gravados com sucesso!",
+    createAccount="Conta criada com sucesso",
+    addBalance="Saldo alterado com sucesso"
 }

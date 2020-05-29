@@ -1,34 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs");
+const getAccountbyCPF_1 = require("./getAccountbyCPF");
 const menssages_1 = require("../menssages");
-const accountsFile = require("../../data/accounts.json");
+const writeInTheSystem_1 = require("./writeInTheSystem");
 function addBalance(name, cpf, money) {
-    const findCPF = accountsFile.find((account) => {
-        return account.cpf === cpf;
+    const accountToAddBalance = getAccountbyCPF_1.getAccountByCpf(cpf);
+    if (accountToAddBalance === undefined && accountToAddBalance.name !== name) {
+        return console.log(menssages_1.errorMenssage.noAccount);
+    }
+    const accountsFile = require("../../data/accounts.json");
+    const newFile = accountsFile.map(element => {
+        if (accountToAddBalance === element) {
+            const newStatement = {
+                operation: "addBalance",
+                data: money
+            };
+            element.balance += money;
+            element.statement.push(newStatement);
+            return element;
+        }
+        else {
+            return element;
+        }
+        ;
     });
-    if (findCPF !== undefined && findCPF.name === name) {
-        const neWFile = accountsFile.map(element => {
-            if (findCPF === element) {
-                const newStatement = {
-                    operation: "addBalance",
-                    data: money
-                };
-                element.balance += money;
-                element.statement.push(newStatement);
-                return element;
-            }
-            else {
-                return element;
-            }
-        });
-        fs.writeFileSync(`data/accounts.json`, JSON.stringify(neWFile));
-        return console.log("valor adicionado com sucesso!");
-    }
-    else {
-        return console.log(menssages_1.errorMenssage);
-    }
-    ;
+    writeInTheSystem_1.writeInTheSystem(newFile);
+    return console.log(menssages_1.sucessMenssage.addBalance);
 }
 exports.default = addBalance;
 ;
