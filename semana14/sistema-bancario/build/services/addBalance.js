@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
-const errorMensages_1 = require("../errorMensages");
+const menssages_1 = require("../menssages");
 const accountsFile = require("../../data/accounts.json");
 function addBalance(name, cpf, money) {
     const findCPF = accountsFile.find((account) => {
@@ -26,8 +26,10 @@ function addBalance(name, cpf, money) {
         return console.log("valor adicionado com sucesso!");
     }
     else {
-        return console.log(errorMensages_1.errorMensage);
+        return console.log(menssages_1.errorMenssage);
     }
+    ;
 }
 exports.default = addBalance;
+;
 //# sourceMappingURL=addBalance.js.map

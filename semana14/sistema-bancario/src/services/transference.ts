@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import {statement} from "../types";
-import {errorMensage} from "../errorMensages";
+import {errorMenssage} from "../menssages";
 
 const accountsFile = require("../../data/accounts.json");
 
@@ -57,9 +57,9 @@ export default function transference(nameOrigin: string, cpfOrigin: string, mone
            
             }
         }else{
-            return console.log(errorMensage);
+            return console.log(errorMenssage);
         }
     }else{
-        return console.log(errorMensage);
+        return console.log(errorMenssage);
     }
 }

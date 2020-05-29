@@ -41,5 +41,12 @@
         "birthDate": "23-12-2012",
         "balance": 234,
         "statement": []
+    },
+    {
+        "name": "Regina",
+        "cpf": "320.234.253-12",
+        "birthDate": "16/10/1993",
+        "balance": null,
+        "statement": []
     }
 ]

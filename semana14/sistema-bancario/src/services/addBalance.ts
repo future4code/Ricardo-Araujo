@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { statement} from "../types"
-import {errorMensage} from "../errorMensages"
+import {errorMenssage} from "../menssages"
 
 const accountsFile = require("../../data/accounts.json");
 
@@ -30,6 +30,6 @@ export default function addBalance(name: string, cpf: string, money: number):voi
         fs.writeFileSync(`data/accounts.json`, JSON.stringify(neWFile));
         return console.log("valor adicionado com sucesso!");
     }else{
-        return console.log(errorMensage);
-    }
-}
+        return console.log(errorMenssage);
+    };
+};

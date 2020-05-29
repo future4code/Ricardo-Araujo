@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
-const errorMensages_1 = require("../errorMensages");
+const menssages_1 = require("../menssages");
 const accountsFile = require("../../data/accounts.json");
 function transference(nameOrigin, cpfOrigin, money, nameDestiny, cpfDestiny) {
     const findCPFOrigin = accountsFile.find((account) => {
@@ -44,11 +44,11 @@ function transference(nameOrigin, cpfOrigin, money, nameDestiny, cpfDestiny) {
             }
         }
         else {
-            return console.log(errorMensages_1.errorMensage);
+            return console.log(menssages_1.errorMenssage);
         }
     }
     else {
-        return console.log(errorMensages_1.errorMensage);
+        return console.log(menssages_1.errorMenssage);
     }
 }
 exports.default = transference;
