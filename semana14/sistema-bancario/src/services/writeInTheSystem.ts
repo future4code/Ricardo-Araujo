@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import {sucessMenssage} from "../menssages";
+import {sucessMenssage, errorMenssage} from "../menssages";
 
 
 export function writeInTheSystem(newFile:any):void{
@@ -8,6 +8,7 @@ export function writeInTheSystem(newFile:any):void{
         return console.log(sucessMenssage.write);
         
     }catch(error){
+            console.log(errorMenssage.write);
         return console.error(error);
-    }
+    };
 };

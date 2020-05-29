@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const menssages_1 = require("./menssages");
 const createAccount_1 = require("./services/createAccount");
 const addBalance_1 = require("./services/addBalance");
 const getAllAccounts_1 = require("./services/getAllAccounts");
@@ -16,8 +17,7 @@ function main() {
                     "balance": 0,
                     "statement": []
                 };
-                createAccount_1.default(mockAccount);
-                break;
+                return createAccount_1.default(mockAccount);
             }
             ;
         case "addBalance":
@@ -25,8 +25,7 @@ function main() {
                 const name = process.argv[3];
                 const cpf = process.argv[4];
                 const money = Number(process.argv[5]);
-                addBalance_1.default(name, cpf, money);
-                break;
+                return addBalance_1.default(name, cpf, money);
             }
             ;
         case "payBill":
@@ -40,19 +39,17 @@ function main() {
                 const money = Number(process.argv[5]);
                 const nameDestiny = process.argv[6];
                 const cpfDestiny = process.argv[7];
-                transference_1.default(nameOrigin, cpfOrigin, money, nameDestiny, cpfDestiny);
-                break;
+                return transference_1.default(nameOrigin, cpfOrigin, money, nameDestiny, cpfDestiny);
             }
             ;
         case "getAllAccounts":
             {
-                getAllAccounts_1.default();
-                break;
+                return console.log(getAllAccounts_1.default());
             }
             ;
         default:
             {
-                console.log("não temos nenhuma operação do tipo selecionado");
+                return console.log(menssages_1.errorMenssage.noOperation);
             }
             ;
     }

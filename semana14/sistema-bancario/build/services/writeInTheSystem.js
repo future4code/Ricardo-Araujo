@@ -9,8 +9,10 @@ function writeInTheSystem(newFile) {
         return console.log(menssages_1.sucessMenssage.write);
     }
     catch (error) {
+        console.log(menssages_1.errorMenssage.write);
         return console.error(error);
     }
+    ;
 }
 exports.writeInTheSystem = writeInTheSystem;
 ;

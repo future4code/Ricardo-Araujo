@@ -1,7 +1,8 @@
-import {statement} from "../types"
+import {statement} from "../types";
 import {getAccountByCpf} from "./getAccountbyCPF";
 import {errorMenssage, sucessMenssage} from "../menssages";
 import {writeInTheSystem} from "./writeInTheSystem";
+import {accountsFile} from "../contant";
 
 
 export default function addBalance(name: string, cpf: string, money: number):void{
@@ -12,8 +13,8 @@ export default function addBalance(name: string, cpf: string, money: number):voi
         return console.log(errorMenssage.noAccount)
     }
     
-    const accountsFile = require("../../data/accounts.json");
-    const newFile = accountsFile.map(element=>{
+    const accounts = accountsFile;
+    const newFile = accounts.map(element=>{
         if(accountToAddBalance===element){
 
             const newStatement: statement={

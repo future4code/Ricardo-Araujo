@@ -1,9 +1,10 @@
-const accountsFile = require("../../data/accounts.json");
+import {accountsFile} from "../contant";
 
 
 export function getAccountByCpf(cpf){
+    const accounts = accountsFile;
     
-    const checkCPF = accountsFile.find((account)=>{
+    const checkCPF = accounts.find((account)=>{
         return account.cpf === cpf
     });
 

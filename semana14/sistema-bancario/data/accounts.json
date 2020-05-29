@@ -23,7 +23,7 @@
         "name": "Cazuza",
         "cpf": "000.001.003-23",
         "birthDate": "12-12-1234",
-        "balance": 1025,
+        "balance": 955,
         "statement": [
             {
                 "operation": "transference",
@@ -32,6 +32,10 @@
             {
                 "operation": "addBalance",
                 "data": 13
+            },
+            {
+                "operation": "transference",
+                "data": 70
             }
         ]
     },
@@ -46,12 +50,23 @@
         "name": "Regina",
         "cpf": "320.234.253-13",
         "birthDate": "24/12/2000",
-        "balance": 26,
+        "balance": 96,
         "statement": [
             {
                 "operation": "addBalance",
                 "data": 14
+            },
+            {
+                "operation": "transference",
+                "data": 70
             }
         ]
+    },
+    {
+        "name": "Rasputin",
+        "cpf": "042.037.023-33",
+        "birthDate": "01/01/1873",
+        "balance": 0,
+        "statement": []
     }
 ]

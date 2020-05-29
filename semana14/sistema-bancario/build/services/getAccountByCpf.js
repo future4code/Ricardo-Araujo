@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAccountByCpf = void 0;
-const accountsFile = require("../../data/accounts.json");
+const contant_1 = require("../contant");
 function getAccountByCpf(cpf) {
-    const checkCPF = accountsFile.find((account) => {
+    const accounts = contant_1.accountsFile;
+    const checkCPF = accounts.find((account) => {
         return account.cpf === cpf;
     });
     return checkCPF;
 }
 exports.getAccountByCpf = getAccountByCpf;
 ;
-console.log(getAccountByCpf("000.001.003-23"));
 //# sourceMappingURL=getAccountbyCPF.js.map

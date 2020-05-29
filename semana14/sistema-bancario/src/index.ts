@@ -1,4 +1,5 @@
-import {account} from "./types"
+import {account} from "./types";
+import {errorMenssage} from "./menssages";
 import createAccount from "./services/createAccount";
 import addBalance from "./services/addBalance";
 import getAllAccounts from "./services/getAllAccounts";
@@ -19,8 +20,7 @@ function main():void{
                 "statement": []
             };
     
-            createAccount(mockAccount);
-            break;
+            return createAccount(mockAccount);
         };
     
         case "addBalance":{
@@ -28,8 +28,7 @@ function main():void{
             const cpf: string = process.argv[4];
             const money: number = Number(process.argv[5]);
     
-            addBalance(name, cpf, money);
-            break;
+            return addBalance(name, cpf, money);
         };
     
         case "payBill":{
@@ -44,17 +43,15 @@ function main():void{
             const nameDestiny: string = process.argv[6];
             const cpfDestiny: string = process.argv[7];
     
-            transference(nameOrigin, cpfOrigin, money, nameDestiny, cpfDestiny);
-            break;
+            return transference(nameOrigin, cpfOrigin, money, nameDestiny, cpfDestiny);
         };
     
         case "getAllAccounts":{
-            getAllAccounts();
-            break;
+            return console.log(getAllAccounts());
         };
     
         default:{
-            console.log("não temos nenhuma operação do tipo selecionado");
+            return console.log(errorMenssage.noOperation);
         };
     };
 };

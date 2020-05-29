@@ -3,11 +3,14 @@ import { errorMenssage,sucessMenssage } from "../menssages";
 import {checkUnderage} from "./checkUnderage";
 import {getAccountByCpf} from "./getAccountbyCPF";
 import {writeInTheSystem} from "./writeInTheSystem";
+import {accountsFile} from "../contant";
 
 
 export default function createAccount (mockAccount: account):void{
+
+    console.log(mockAccount);
     
-    if(!mockAccount.name || !mockAccount.cpf || !mockAccount.birthDate || !mockAccount.balance){
+    if(!mockAccount.name || !mockAccount.cpf || !mockAccount.birthDate || mockAccount.balance!==0){
         return console.log(errorMenssage.missingInfoCreateAccount)
     };
     
@@ -23,8 +26,8 @@ export default function createAccount (mockAccount: account):void{
         return console.log(errorMenssage.CpfAlreadyInUse);
     };
     
-    const accountsFile = require("../../data/accounts.json");
-    const newFile = accountsFile;
+    const accounts = accountsFile;
+    const newFile = accounts;
     newFile.push(mockAccount);
 
     writeInTheSystem(newFile);

@@ -1,9 +1,9 @@
-const accountsFile = require("../../data/accounts.json");
+import {accountsFile} from "../contant";
 
-export default function getAllAccounts(){
+export default function getAllAccounts():any{
     const allAccounts = accountsFile.map(element=>{
         return (`${element.name}, ${element.cpf}`)
     });
    
-    return console.log(allAccounts);   
+    return allAccounts;   
 };
