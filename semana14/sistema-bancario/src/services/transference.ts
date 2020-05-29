@@ -1,65 +1,55 @@
 import * as fs from "fs";
 import {statement} from "../types";
-import {errorMenssage} from "../menssages";
+import {errorMenssage, sucessMenssage} from "../menssages";
+import {getAccountByCpf} from "./getAccountbyCPF";
+import {writeInTheSystem} from "./writeInTheSystem";
 
-const accountsFile = require("../../data/accounts.json");
 
 
 export default function transference(nameOrigin: string, cpfOrigin: string, money: number, nameDestiny: string, cpfDestiny:string):void{
 
-    const findCPFOrigin = accountsFile.find((account)=>{
-        return account.cpf === cpfOrigin
-    });
+    const accountOrigin = getAccountByCpf(cpfOrigin);
+    const accountDestiny = getAccountByCpf(cpfDestiny);
 
-    const findCPFDestiny = accountsFile.find((account)=>{
-        return account.cpf === cpfDestiny
-    });
+    if(accountOrigin===undefined || accountOrigin.name!==nameOrigin || 
+        accountDestiny===undefined || accountDestiny.name!==nameDestiny){
+        return console.log(errorMenssage.noAccount);
+    };
 
-    if(findCPFOrigin!==undefined && findCPFDestiny!==undefined){
-        
-        if(findCPFOrigin.name === nameOrigin && findCPFDestiny.name === nameDestiny){
+    if(accountOrigin.balance<money){
+        return console.log(errorMenssage.noBalance);
+    };
 
-            if(findCPFOrigin.balance>=money){
-
-                const neWFile = accountsFile.map(element=>{
-                    if(findCPFOrigin===element){
     
-                        const newStatement: statement={
-                            operation: "transference",
-                            data: money
-                        }
-            
-                        element.balance-=money;
-                        element.statement.push(newStatement);
-                        return element;
-                        
-                    }else if(findCPFDestiny===element){
+    const accountsFile = require("../../data/accounts.json");
+    const newFile = accountsFile.map(element=>{
+        if(accountOrigin===element){
 
-                        const newStatement: statement={
-                            operation: "transference",
-                            data: money
-                        }
-            
-                        element.balance+=money;
-                        element.statement.push(newStatement);
-                        return element;
-                    }else{
-                        return element;
-                    }
-                });
-                
-                fs.writeFileSync(`data/accounts.json`, JSON.stringify(neWFile));
-                return console.log("Transferencia realizada com sucesso")
-                
+            const newStatement: statement={
+                operation: "transference",
+                data: money
+            };
 
-            }else{
-                return console.log("Saldo insuficiente");
-           
-            }
+            element.balance-=money;
+            element.statement.push(newStatement);
+            return element;
+            
+        }else if(accountDestiny===element){
+
+            const newStatement: statement={
+                operation: "transference",
+                data: money
+            };
+
+            element.balance+=money;
+            element.statement.push(newStatement);
+            return element;
         }else{
-            return console.log(errorMenssage);
-        }
-    }else{
-        return console.log(errorMenssage);
-    }
-}
+            return element;
+        };
+    });
+    
+    writeInTheSystem(newFile);
+
+    return console.log(sucessMenssage.tranference);
+};

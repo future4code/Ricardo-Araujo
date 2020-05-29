@@ -6,7 +6,7 @@ import transference from "./services/transference";
 
 const action: string = process.argv[2];
 
-function main(){
+function main():void{
     
     switch(action){
         case "createAccount":{

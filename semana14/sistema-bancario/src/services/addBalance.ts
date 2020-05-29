@@ -8,7 +8,7 @@ export default function addBalance(name: string, cpf: string, money: number):voi
     
     const accountToAddBalance = getAccountByCpf(cpf);
     
-    if(accountToAddBalance===undefined && accountToAddBalance.name!==name){
+    if(accountToAddBalance===undefined || accountToAddBalance.name!==name){
         return console.log(errorMenssage.noAccount)
     }
     
