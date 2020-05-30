@@ -21,7 +21,7 @@ function createAccount(mockAccount) {
         return console.log(menssages_1.errorMenssage.CpfAlreadyInUse);
     }
     ;
-    const operationDescription = `${mockAccount.name}, ${mockAccount.cpf}, ${mockAccount.birthDate}, ${mockAccount.balance}`;
+    const operationDescription = `${mockAccount.name}, ${mockAccount.cpf}, ${mockAccount.birthDate}`;
     const newStatement = new Statement_1.default("createAccount", operationDescription);
     mockAccount.statement.push(newStatement);
     const accounts = contant_1.accountsFile;

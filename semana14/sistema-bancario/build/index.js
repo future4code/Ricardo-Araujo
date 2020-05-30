@@ -5,6 +5,7 @@ const createAccount_1 = require("./services/createAccount");
 const addBalance_1 = require("./services/addBalance");
 const getAllAccounts_1 = require("./services/getAllAccounts");
 const transference_1 = require("./services/transference");
+const getBalance_1 = require("./services/getBalance");
 const action = process.argv[2];
 function main() {
     switch (action) {
@@ -47,6 +48,11 @@ function main() {
                 return console.log(getAllAccounts_1.default());
             }
             ;
+        case "getBalance": {
+            const name = process.argv[3];
+            const cpf = process.argv[4];
+            return getBalance_1.default(name, cpf);
+        }
         default:
             {
                 return console.log(menssages_1.errorMenssage.noOperation);

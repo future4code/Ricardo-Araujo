@@ -134,5 +134,31 @@
                 "description": "Transferido 20, para Marcel"
             }
         ]
+    },
+    {
+        "name": "Ricardo",
+        "cpf": "112.123.543-54",
+        "birthDate": "2/3/1234",
+        "balance": 0,
+        "statement": [
+            {
+                "operation": "createAccount",
+                "date": "29/05/2020, 21:47:20",
+                "description": "Ricardo, 112.123.543-54, 2/3/1234, 0"
+            }
+        ]
+    },
+    {
+        "name": "Ricardo",
+        "cpf": "112.123.544-54",
+        "birthDate": "12/12/1999",
+        "balance": 0,
+        "statement": [
+            {
+                "operation": "createAccount",
+                "date": "29/05/2020, 22:18:53",
+                "description": "Ricardo, 112.123.544-54, 12/12/1999"
+            }
+        ]
     }
 ]

@@ -11,5 +11,4 @@ class Statement {
 }
 exports.default = Statement;
 ;
-const teste = new Statement("add", "testando construtor");
 //# sourceMappingURL=Statement.js.map

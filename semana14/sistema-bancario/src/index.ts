@@ -1,9 +1,12 @@
+import * as moment from "moment";
 import {account} from "./types";
 import {errorMenssage} from "./menssages";
 import createAccount from "./services/createAccount";
 import addBalance from "./services/addBalance";
 import getAllAccounts from "./services/getAllAccounts";
 import transference from "./services/transference";
+import getBalance from "./services/getBalance";
+
 
 const action: string = process.argv[2];
 
@@ -49,6 +52,12 @@ function main():void{
         case "getAllAccounts":{
             return console.log(getAllAccounts());
         };
+
+        case "getBalance":{
+            const name: string = process.argv[3];
+            const cpf: string = process.argv[4];
+            return getBalance(name, cpf);
+        }
     
         default:{
             return console.log(errorMenssage.noOperation);

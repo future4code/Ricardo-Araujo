@@ -1,4 +1,5 @@
 import Statement from "./models/Statement";
+import * as moment from "moment"
 
 export type account = {
     name: string,

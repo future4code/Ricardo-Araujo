@@ -1,7 +1,7 @@
 import {accountsFile} from "../contant";
 
 
-export function getAccountByCpf(cpf){
+export function getAccountByCpf(cpf:string):any{
     const accounts = accountsFile;
     
     const checkCPF = accounts.find((account)=>{

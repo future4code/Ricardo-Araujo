@@ -12,7 +12,7 @@ export default function createAccount (mockAccount: account):void{
     if(!mockAccount.name || !mockAccount.cpf || !mockAccount.birthDate || mockAccount.balance!==0){
         return console.log(errorMenssage.missingInfoCreateAccount)
     };
-    
+
     const itsUnderage = checkUnderage(mockAccount.birthDate);
     
     if(itsUnderage){
@@ -25,7 +25,7 @@ export default function createAccount (mockAccount: account):void{
         return console.log(errorMenssage.CpfAlreadyInUse);
     };
 
-    const operationDescription = `${mockAccount.name}, ${mockAccount.cpf}, ${mockAccount.birthDate}, ${mockAccount.balance}`
+    const operationDescription = `${mockAccount.name}, ${mockAccount.cpf}, ${mockAccount.birthDate}`
     const newStatement = new Statement("createAccount", operationDescription);
 
     mockAccount.statement.push(newStatement); 

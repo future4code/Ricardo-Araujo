@@ -11,5 +11,3 @@ export default class Statement{
     };
 };
 
-const teste = new Statement("add", "testando construtor");
-
