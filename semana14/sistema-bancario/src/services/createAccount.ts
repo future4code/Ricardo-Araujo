@@ -4,11 +4,10 @@ import {checkUnderage} from "./checkUnderage";
 import {getAccountByCpf} from "./getAccountbyCPF";
 import {writeInTheSystem} from "./writeInTheSystem";
 import {accountsFile} from "../contant";
+import Statement from "../models/Statement";
 
 
 export default function createAccount (mockAccount: account):void{
-
-    console.log(mockAccount);
     
     if(!mockAccount.name || !mockAccount.cpf || !mockAccount.birthDate || mockAccount.balance!==0){
         return console.log(errorMenssage.missingInfoCreateAccount)
@@ -25,7 +24,12 @@ export default function createAccount (mockAccount: account):void{
     if(checkCpfAlreadyInUse!==undefined){
         return console.log(errorMenssage.CpfAlreadyInUse);
     };
-    
+
+    const operationDescription = `${mockAccount.name}, ${mockAccount.cpf}, ${mockAccount.birthDate}, ${mockAccount.balance}`
+    const newStatement = new Statement("createAccount", operationDescription);
+
+    mockAccount.statement.push(newStatement); 
+
     const accounts = accountsFile;
     const newFile = accounts;
     newFile.push(mockAccount);

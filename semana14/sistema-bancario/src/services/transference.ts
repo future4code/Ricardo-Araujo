@@ -1,9 +1,8 @@
-import * as fs from "fs";
-import {statement} from "../types";
 import {errorMenssage, sucessMenssage} from "../menssages";
 import {getAccountByCpf} from "./getAccountbyCPF";
 import {writeInTheSystem} from "./writeInTheSystem";
 import {accountsFile} from "../contant";
+import Statement from "../models/Statement";
 
 
 
@@ -11,9 +10,6 @@ export default function transference(nameOrigin: string, cpfOrigin: string, mone
 
     const accountOrigin = getAccountByCpf(cpfOrigin);
     const accountDestiny = getAccountByCpf(cpfDestiny);
-
-    console.log(accountOrigin);
-    console.log(accountDestiny);
 
     if(accountOrigin===undefined || accountOrigin.name!==nameOrigin || 
         accountDestiny===undefined || accountDestiny.name!==nameDestiny){
@@ -29,10 +25,10 @@ export default function transference(nameOrigin: string, cpfOrigin: string, mone
     const newFile = accounts.map(element=>{
         if(accountOrigin===element){
 
-            const newStatement: statement={
-                operation: "transference",
-                data: money
-            };
+
+            const operationDescription = `Transferido ${money}, para ${accountDestiny.name}`
+            const newStatement = new Statement("transference", operationDescription);
+
 
             element.balance-=money;
             element.statement.push(newStatement);
@@ -40,10 +36,9 @@ export default function transference(nameOrigin: string, cpfOrigin: string, mone
             
         }else if(accountDestiny===element){
 
-            const newStatement: statement={
-                operation: "transference",
-                data: money
-            };
+            
+            const operationDescription = `Recebido ${money}, de ${accountOrigin.name}`
+            const newStatement = new Statement("transference", operationDescription);
 
             element.balance+=money;
             element.statement.push(newStatement);

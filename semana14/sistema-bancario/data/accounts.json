@@ -66,7 +66,73 @@
         "name": "Rasputin",
         "cpf": "042.037.023-33",
         "birthDate": "01/01/1873",
+        "balance": 42,
+        "statement": [
+            {
+                "operation": "addBalance",
+                "date": "29/05/2020, 21:02:04",
+                "description": 42
+            }
+        ]
+    },
+    {
+        "name": "Marcel",
+        "cpf": "212.321.523-65",
+        "birthDate": "12/04/1973",
+        "balance": 20.59,
+        "statement": [
+            {
+                "operation": "createAccount",
+                "data": "0"
+            },
+            {
+                "operation": "addBalance",
+                "date": "29/05/2020, 20:59:46",
+                "description": 20.59
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:17:52",
+                "description": "Transferido 10, de $[accountOrigin.name], para Artur"
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:19:32",
+                "description": "Transferido 10, para Artur"
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:23:58",
+                "description": "Recebido 20, de Artur"
+            }
+        ]
+    },
+    {
+        "name": "Artur",
+        "cpf": "123.123.123.33",
+        "birthDate": "12/03/1983",
         "balance": 0,
-        "statement": []
+        "statement": [
+            {
+                "operation": "createAccount",
+                "date": "29/05/2020, 21:11:21",
+                "description": "Artur, 123.123.123.33, 12/03/1983, 0"
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:17:52",
+                "description": 10
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:19:32",
+                "description": 10
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:23:58",
+                "description": "Transferido 20, para Marcel"
+            }
+        ]
     }
 ]

@@ -1,8 +1,8 @@
-import {statement} from "../types";
 import {getAccountByCpf} from "./getAccountbyCPF";
 import {errorMenssage, sucessMenssage} from "../menssages";
 import {writeInTheSystem} from "./writeInTheSystem";
 import {accountsFile} from "../contant";
+import Statement from "../models/Statement";
 
 
 export default function addBalance(name: string, cpf: string, money: number):void{
@@ -11,16 +11,13 @@ export default function addBalance(name: string, cpf: string, money: number):voi
     
     if(accountToAddBalance===undefined || accountToAddBalance.name!==name){
         return console.log(errorMenssage.noAccount)
-    }
+    };
     
     const accounts = accountsFile;
     const newFile = accounts.map(element=>{
         if(accountToAddBalance===element){
 
-            const newStatement: statement={
-                operation: "addBalance",
-                data: money
-            };
+            const newStatement = new Statement("addBalance", money);
 
             element.balance+=money;
             element.statement.push(newStatement);
@@ -29,7 +26,6 @@ export default function addBalance(name: string, cpf: string, money: number):voi
             return element;
         };
     });
-
 
     writeInTheSystem(newFile);
     return console.log(sucessMenssage.addBalance);
