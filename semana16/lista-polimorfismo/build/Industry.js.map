@@ -1,0 +1,1 @@
+{"version":3,"file":"Industry.js","sourceRoot":"","sources":["../src/Industry.ts"],"names":[],"mappings":";;;AAAA,mCAA8B;AAE9B,MAAa,QAAS,SAAQ,aAAK;IAC/B,YACY,gBAAwB,EAGlC,GAAW;QAEP,KAAK,CAAC,GAAG,CAAC,CAAC;QALL,qBAAgB,GAAhB,gBAAgB,CAAQ;IAMpC,CAAC;IAAA,CAAC;IAEK,mBAAmB;QACtB,OAAO,IAAI,CAAC,gBAAgB,CAAC;IACjC,CAAC;IAAA,CAAC;CACL;AAbD,4BAaC;AAAA,CAAC"}
