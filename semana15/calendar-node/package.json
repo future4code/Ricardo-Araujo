@@ -1,0 +1,16 @@
+{
+  "name": "calendar-node",
+  "version": "1.0.0",
+  "description": "semana15-aula4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node build/index.js"
+  },
+  "author": "Ricardo Araujo",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.0.5",
+    "moment": "^2.26.0"
+  }
+}
