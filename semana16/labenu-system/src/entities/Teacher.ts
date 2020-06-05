@@ -1,6 +1,9 @@
 import {User} from "./User"; 
+import { FileManager } from "./FileManager";
 
 export class Teacher implements User{
+
+    // public fileManager:FileManager = new FileManager("./data/teacher.json");
 
     constructor(
         public id: number,
