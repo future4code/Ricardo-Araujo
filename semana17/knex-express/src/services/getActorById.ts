@@ -6,7 +6,8 @@ export const getActorById = async (id: string): Promise<void> => {
         SELECT * FROM Actor WHERE id = '${id}'
       `)
     
-        return console.log(result[0][0]);
+        console.log(result[0][0]);
+        return result[0][0];
 
     }catch(error){
         console.error(error.message);

@@ -82,3 +82,9 @@ c.
 
 # Exercicio 03
 
+a. o id que estamos passando como path esta sendo considerado como um request, então para acessar sua propriedade usamos este caminho.
+
+b. são condicionais de comportamento para cada caso de resposta do servidor.
+
+c. 
+
