@@ -37,7 +37,7 @@ function main(){
 
   // app.get('/user/:id', async (req: Request, res: Response)=>{
   //   try{
-  //     const id = req.params.id
+  //     const id = req.params.id;
   //     const user = await getUserById(id);
 
   //     if(user===undefined){
@@ -57,17 +57,15 @@ function main(){
   app.post('/user/edit', async(req: Request, res: Response)=>{
     try{
       const {id, name, nickname} = req.body;
-      editUser(id, name, nickname);
+      await editUser(id, name, nickname);
 
+      res.status(200).send({message: sucessMessage.editUser});
     }catch(error){
       res.status(400).send({
         message: error.mysqlMessage || error.message
       });
     };
   });
-
-  editUser("5", "Update VScode");
-
 
 
 };
