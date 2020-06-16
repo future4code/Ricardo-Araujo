@@ -1,0 +1,22 @@
+{
+  "name": "sistema-bancario",
+  "version": "0.0.1",
+  "description": "semana14-projeto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node build/index.js"
+  },
+  "keywords": [
+    "labenu"
+  ],
+  "author": "Ricardo Araujo",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.26.0"
+  },
+  "devDependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/node": "^14.0.4"
+  }
+}

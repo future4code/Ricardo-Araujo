@@ -1,0 +1,164 @@
+[
+    {
+        "name": "Ricardo",
+        "cpf": "201.203.203.47",
+        "birthDate": "32-43-1229",
+        "balance": 2410,
+        "statement": [
+            {
+                "operation": "addMoney",
+                "data": 34
+            },
+            {
+                "operation": "addMoney",
+                "data": 34
+            },
+            {
+                "operation": "transference",
+                "data": 1000
+            }
+        ]
+    },
+    {
+        "name": "Cazuza",
+        "cpf": "000.001.003-23",
+        "birthDate": "12-12-1234",
+        "balance": 955,
+        "statement": [
+            {
+                "operation": "transference",
+                "data": 1000
+            },
+            {
+                "operation": "addBalance",
+                "data": 13
+            },
+            {
+                "operation": "transference",
+                "data": 70
+            }
+        ]
+    },
+    {
+        "name": "Joao",
+        "cpf": "302.029.301-24",
+        "birthDate": "23-12-2012",
+        "balance": 234,
+        "statement": []
+    },
+    {
+        "name": "Regina",
+        "cpf": "320.234.253-13",
+        "birthDate": "24/12/2000",
+        "balance": 96,
+        "statement": [
+            {
+                "operation": "addBalance",
+                "data": 14
+            },
+            {
+                "operation": "transference",
+                "data": 70
+            }
+        ]
+    },
+    {
+        "name": "Rasputin",
+        "cpf": "042.037.023-33",
+        "birthDate": "01/01/1873",
+        "balance": 42,
+        "statement": [
+            {
+                "operation": "addBalance",
+                "date": "29/05/2020, 21:02:04",
+                "description": 42
+            }
+        ]
+    },
+    {
+        "name": "Marcel",
+        "cpf": "212.321.523-65",
+        "birthDate": "12/04/1973",
+        "balance": 20.59,
+        "statement": [
+            {
+                "operation": "createAccount",
+                "data": "0"
+            },
+            {
+                "operation": "addBalance",
+                "date": "29/05/2020, 20:59:46",
+                "description": 20.59
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:17:52",
+                "description": "Transferido 10, de $[accountOrigin.name], para Artur"
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:19:32",
+                "description": "Transferido 10, para Artur"
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:23:58",
+                "description": "Recebido 20, de Artur"
+            }
+        ]
+    },
+    {
+        "name": "Artur",
+        "cpf": "123.123.123.33",
+        "birthDate": "12/03/1983",
+        "balance": 0,
+        "statement": [
+            {
+                "operation": "createAccount",
+                "date": "29/05/2020, 21:11:21",
+                "description": "Artur, 123.123.123.33, 12/03/1983, 0"
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:17:52",
+                "description": 10
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:19:32",
+                "description": 10
+            },
+            {
+                "operation": "transference",
+                "date": "29/05/2020, 21:23:58",
+                "description": "Transferido 20, para Marcel"
+            }
+        ]
+    },
+    {
+        "name": "Ricardo",
+        "cpf": "112.123.543-54",
+        "birthDate": "2/3/1234",
+        "balance": 0,
+        "statement": [
+            {
+                "operation": "createAccount",
+                "date": "29/05/2020, 21:47:20",
+                "description": "Ricardo, 112.123.543-54, 2/3/1234, 0"
+            }
+        ]
+    },
+    {
+        "name": "Ricardo",
+        "cpf": "112.123.544-54",
+        "birthDate": "12/12/1999",
+        "balance": 0,
+        "statement": [
+            {
+                "operation": "createAccount",
+                "date": "29/05/2020, 22:18:53",
+                "description": "Ricardo, 112.123.544-54, 12/12/1999"
+            }
+        ]
+    }
+]
