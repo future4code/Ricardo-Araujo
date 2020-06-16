@@ -1,0 +1,20 @@
+[
+    {
+        "id": 4,
+        "startDate": "2020-02-10T03:00:00.000Z",
+        "endDate": "2020-08-21T03:00:00.000Z",
+        "currentModule": 4,
+        "teachers": [],
+        "students": [],
+        "name": "Hamilton"
+    },
+    {
+        "id": 103893245,
+        "startDate": null,
+        "endDate": "2013-08-30T03:00:00.000Z",
+        "currentModule": null,
+        "teachers": [],
+        "students": [],
+        "name": "Ninjas-na-night"
+    }
+]
