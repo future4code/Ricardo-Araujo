@@ -28,4 +28,22 @@ export class BandBusiness{
 
         await BandDatabase.createBand(band);
     };
+
+
+    public async getBand(
+        data:any,
+        BandDatabase:any,
+        tokenAuthenticator:any,
+    ):Promise<any>{
+
+        const authorization = tokenAuthenticator.getData(data.token);
+
+        const band = await BandDatabase.getBandById(data.id);
+
+        if(!band){
+            throw new Error(failureMessage.band);
+        };
+
+        return band;
+    };
 };

@@ -13,3 +13,12 @@ CREATE TABLE IF NOT EXISTS lama_bands (
   responsible VARCHAR(255) UNIQUE NOT NULL,
   FOREIGN KEY(responsible) REFERENCES lama_users(id)
 );
+
+CREATE TABLE IF NOT EXISTS lama_shows (
+  id VARCHAR(255) PRIMARY KEY,
+  week_day VARCHAR(255) NOT NULL,
+  start_time INT NOT NULL,
+  end_time INT NOT NULL,
+  band_id VARCHAR(255) NOT NULL,
+  FOREIGN KEY(band_id) REFERENCES lama_bands(id)
+);

@@ -8,5 +8,10 @@ export class BandDatabase extends BaseDatabase{
             .into(BandDatabase.TABLE_BANDS);
     };
 
+    public async getBandById(id: string){
+        const result = await super.getConnection().select("*")
+            .into(BaseDatabase.TABLE_BANDS).where({id});
 
+        return result[0];
+    };
 };

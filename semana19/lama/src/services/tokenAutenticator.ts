@@ -3,7 +3,7 @@ import {dataTokenInput} from "../models/tokenInput";
 
 export class tokenAuthenticator{
     private static REFRESH_EXPIRES_IN = "1y";
-    private static ACCESS_EXPIRES_IN = "1min";
+    private static ACCESS_EXPIRES_IN = "1day";
 
     public generateAccessToken(data: dataTokenInput):string{
         return jwt.sign(data, process.env.JWT_KEY as string,{
