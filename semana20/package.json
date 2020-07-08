@@ -11,6 +11,7 @@
   "dependencies": {
     "@types/knex": "^0.16.1",
     "@types/node": "^14.0.19",
-    "knex": "^0.21.1"
+    "knex": "^0.21.1",
+    "mysql": "^2.18.1"
   }
 }
