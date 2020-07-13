@@ -1,5 +1,17 @@
-exports.handler = async(event)=>{
-    new Character().create(event)
+export const handler = async(event)=>{
+   try{
+        await new Character().create(event);
+        return {
+            statusCode: 200,
+            body: JSON.stringify({message: 'Personagem adicionado com sucesso'})
+        };
+      
+   }catch(error){
+       return{
+           statusCode:400,
+           body: JSON.stringify(error.message)
+       }
+   }
 };
 
 import knex from "knex";
@@ -30,7 +42,7 @@ class BaseDatabase{
 
 class Character extends BaseDatabase{
 
-    public create(body:any){
-        super.getConnection().insert(body).into("aws_personagem")
+    public async create(body:any){
+        await super.getConnection().insert(body).into("aws_personagem")
     };
 };
