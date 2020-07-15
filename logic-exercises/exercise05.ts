@@ -84,6 +84,6 @@ class secondToFullTime{
 
 };
 
-const teste = new secondToFullTime(3661).convert();
+const teste5 = new secondToFullTime(3661).convert();
 
 console.log(teste);
