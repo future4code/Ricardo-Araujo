@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node build/exercise07.js"
+    "start": "tsc && node build/exercise08.js"
 
   },
   "author": "Ricardo Araujo",
