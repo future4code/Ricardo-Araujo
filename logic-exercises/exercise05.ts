@@ -1,4 +1,17 @@
+/*
+Escreva uma função que receba um horário expressado em segundos e transforme-o para o formato: `{hora}h {minuto}m {segundo}s`. Exemplos:
 
+**Entrada**           **Saída**
+
+30                     `"30s"`
+
+350                   `"5m 50s"`
+
+3725                 `"1h 02m 05s"`
+
+
+
+*/
 
 // function secondToFullTime(valueInSecond:number){
 

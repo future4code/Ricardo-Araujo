@@ -1,3 +1,11 @@
+/*
+Hoje, nós vamos fazer um "somador" de números um pouco diferente. 
+Ele será rodada no terminal (como um script) e funciona da seguinte maneira: 
+o usuário tem que inserir cada um dos números que desejar somar seguido de um *enter;* quando o usuário digitar `0`, 
+você deve imprimir o resultado da soma de todos esses números no terminal e encerrar a execução do script. 
+Veja abaixo um gif que tem o comportamento esperado:
+*/
+
 import readline from "readline";
 
 function sum(){

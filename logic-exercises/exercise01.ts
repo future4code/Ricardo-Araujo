@@ -1,3 +1,13 @@
+/*
+Resolva os exercícios em arquivos typescript. Testes são bem-vindos.
+
+a. Faça uma função que receba um `array` de números e devolva um objeto que contenha as informações: soma de todos os itens, 
+quantidade de itens e multiplicação de todos os itens
+
+b. Faça uma função que receba um `array` de números e devolve um objeto que contenha as informações: maior número e menor número
+
+*/
+
 //a.
 type result = {
     total: number,
