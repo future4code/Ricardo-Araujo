@@ -1,5 +1,6 @@
 import {LinkedList, LinkedNode} from "./exercise01";
 import { Stack } from "./exercise02";
+import { Queue } from "./exercise03";
 
 function main():void{
     // const listaBonita = new LinkedList(4);
@@ -12,20 +13,37 @@ function main():void{
 
     // listaBonita.printList();
     
-    const myStack = new Stack
 
-    myStack.push(5);
-    myStack.push(4);
-    myStack.push(3);
-    myStack.push(1);
-    myStack.pop();
-    myStack.pop();
-    myStack.pop();
+    //exercise 02
+    // const myStack = new Stack
+
+    // myStack.push(5);
+    // myStack.push(4);
+    // myStack.push(3);
+    // myStack.push(1);
     // myStack.pop();
+    // myStack.pop();
+    // myStack.pop();
+    // // myStack.pop();
 
-    myStack.print()
+    // myStack.print()
 
-    console.log(myStack.isEmpty())
+    // console.log(myStack.isEmpty())
+
+
+    //exercise 03
+
+    // const myQueue = new Queue;
+    // myQueue.enqueue(1);
+    // myQueue.enqueue(2);
+    // myQueue.enqueue(3);
+    // myQueue.deQueue();
+    // myQueue.deQueue();
+    // myQueue.deQueue();
+    // myQueue.enqueue(5);
+
+    // myQueue.print();
+    // console.log(myQueue.isEmpty());
 };
 
 main();
