@@ -43,9 +43,9 @@ class calcString{
 };
 
 
-const test = new calcString("escola");
+const test2 = new calcString("escola");
 
-console.log(test.calcA());
-console.log(test.stringToArray());
+console.log(test2.calcA());
+console.log(test2.stringToArray());
 
 // obs. solução com complexidade O(n)
