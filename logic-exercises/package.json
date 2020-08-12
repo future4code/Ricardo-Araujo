@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
-    "start": "tsc && node build/exercise16.js"
+    "start": "tsc && node build/src/exercise18.js"
   },
   "author": "Ricardo Araujo",
   "license": "ISC"
