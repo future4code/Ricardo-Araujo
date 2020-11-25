@@ -36,3 +36,5 @@ function stealHome(input:number[], index:number=0){
 
     };
 };
+
+//solução: https://medium.com/outco/how-to-solve-the-house-robber-problem-f3535ebaef1b
